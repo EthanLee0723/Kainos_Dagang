@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand guideline, Aug 2026: orange / black / white. */
+  --color-ink: #000000;
+  --color-ink-2: #111111;
+  --color-ink-line: #2b2b2b;
+  --color-orange: #fe5200;
+  --color-paper: #ffffff;
+  /* The shop floor: neutrals tinted toward the orange, never cool grey. */
+  --color-floor: #f4f2ee;
+  --color-floor-2: #ebe8e1;
+  --color-line: #d8d3c9;
+  --color-muted: #55524b;
+  --color-whatsapp: #25d366;
+
+  --font-display: var(--font-moderniz), var(--font-cjk), sans-serif;
+  --font-sans: var(--font-poppins), var(--font-cjk), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  html {
+    scrollbar-color: var(--color-ink) var(--color-floor);
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-orange);
+    color: var(--color-ink);
+  }
+
+  input,
+  textarea {
+    caret-color: var(--color-orange);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+
+  /* On orange fields the ring switches to black so it stays visible. */
+  .on-orange :focus-visible {
+    outline-color: var(--color-ink);
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 0.08em;
+  }
+
+  /* Moderniz ships one heavy weight: never let the browser fake bold or italic. */
+  .font-display {
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0.01em;
+  }
+
+  /* Chinese has no Moderniz glyphs; give its headings a real heavy weight. */
+  :lang(zh) .font-display {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+  }
+
+  :lang(zh) body {
+    line-break: strict;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Hazard stripes from the tagline band: black bars leaning 13.3° off vertical,
+ * each about a third of the band's height thick, repeating every ~0.7 heights.
+ * Set --hazard-h to the band height so the rhythm scales with it.
+ */
+@utility hazard {
+  --hazard-h: 64px;
+  background-image: repeating-linear-gradient(
+    76.7deg,
+    var(--color-ink) 0 calc(var(--hazard-h) * 0.322),
+    transparent calc(var(--hazard-h) * 0.322) calc(var(--hazard-h) * 0.7)
+  );
+}
+
+/* Signature motion: footprints that appear one step at a time as you scroll. */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.footstep {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .footstep {
+      animation: step-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
+  }
+}

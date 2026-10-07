@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T11:08:04+00:00",
+  "title": "Design System: Kainos Dagang",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Signboard Black",
+        "canonical": "oklch(0.0% 0.000 0.0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Raised Black",
+        "canonical": "oklch(17.8% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Sign Keyline",
+        "canonical": "oklch(28.9% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Safety Orange",
+        "canonical": "oklch(67.1% 0.219 38.2)",
+        "tonalRamp": [
+          "#230000",
+          "#480d00",
+          "#761f00",
+          "#a83300",
+          "#df4600",
+          "#ff764b",
+          "#ffb59d",
+          "#fee9e3"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "floor": {
+        "role": "neutral",
+        "displayName": "Shop Floor",
+        "canonical": "oklch(96.2% 0.006 84.6)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#262522",
+          "#43423f",
+          "#63615e",
+          "#84827e",
+          "#a7a5a1",
+          "#cbc9c5",
+          "#f0eeea"
+        ]
+      },
+      "floor-2": {
+        "role": "neutral",
+        "displayName": "Shop Floor Deep",
+        "canonical": "oklch(93.1% 0.010 87.5)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#272520",
+          "#44423c",
+          "#64615b",
+          "#85827c",
+          "#a8a59e",
+          "#ccc9c2",
+          "#f1eee7"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Floor Line",
+        "canonical": "oklch(86.8% 0.015 84.6)",
+        "tonalRamp": [
+          "#0e0b05",
+          "#28251d",
+          "#464139",
+          "#656158",
+          "#868279",
+          "#a9a49b",
+          "#cec9bf",
+          "#f3eee4"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(43.9% 0.012 87.5)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#27251f",
+          "#45423b",
+          "#64615a",
+          "#85827a",
+          "#a8a59d",
+          "#ccc9c1",
+          "#f2eee6"
+        ]
+      },
+      "whatsapp": {
+        "role": "functional",
+        "displayName": "WhatsApp Green",
+        "canonical": "oklch(76.1% 0.201 149.7)",
+        "tonalRamp": [
+          "#001101",
+          "#002f0e",
+          "#005120",
+          "#007632",
+          "#039d46",
+          "#03c65b",
+          "#4cec7e",
+          "#c7ffd1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Moderniz)",
+        "purpose": "Uppercase section titles, catalogue title, closing line. Never above 6rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Hero promise and product names on product pages."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Product tile names, fitting step titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Intros and descriptions, 34–52ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, chips, form labels, language switcher."
+      },
+      "sign-label": {
+        "displayName": "Sign Label (Moderniz)",
+        "purpose": "Signboard category board, product codes, footer column headings."
+      }
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 10px 28px -6px rgb(0 0 0 / 0.45)",
+        "purpose": "The floating WhatsApp button, the only element above the page."
+      },
+      {
+        "name": "float-label",
+        "value": "0 8px 24px -8px rgb(0 0 0 / 0.5)",
+        "purpose": "Phone-number pill revealed beside the float on desktop hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-strong",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Presses (scale .97, 150ms), arrow nudges, hazard-strip wipe (500ms)."
+      },
+      {
+        "name": "ease-in-out-strong",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Reserved for on-screen movement."
+      },
+      {
+        "name": "step-in",
+        "value": "opacity 0→1, translateY(10px) scale(.96)→none; animation-timeline: view(); range entry 10%–70%",
+        "purpose": "Bootprint trail; static when reduced motion is on or scroll timelines are unsupported."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "416px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action on paper and on orange fields; tile WhatsApp buttons carry a green glyph.",
+      "html": "<button class=\"ds-btn-ink\"><span class=\"ds-wa\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z\"/></svg></span>Request a quotation</button>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:9999px;font-weight:600;transition:background-color .15s cubic-bezier(.23,1,.32,1),border-color .15s,transform .15s cubic-bezier(.23,1,.32,1);height:48px;padding:0 24px;background:#000;color:#fff;border:0;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:15px;} .ds-btn-ink .ds-wa{color:#25d366;display:inline-flex} .ds-btn-ink:hover{background:#111} .ds-btn-ink:active{transform:scale(.97)} .ds-btn-ink:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    },
+    {
+      "name": "WhatsApp Button",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "The product page's main enquiry and the closing call to action; green only ever means WhatsApp.",
+      "html": "<button class=\"ds-btn-wa\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z\"/></svg>Ask about this on WhatsApp</button>",
+      "css": ".ds-btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:9999px;font-weight:600;transition:background-color .15s cubic-bezier(.23,1,.32,1),border-color .15s,transform .15s cubic-bezier(.23,1,.32,1);height:56px;padding:0 32px;background:#25d366;color:#000;border:0;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:16px;} .ds-btn-wa:hover{background:#2ee072} .ds-btn-wa:active{transform:scale(.97)} .ds-btn-wa:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary actions such as branch directions and calls.",
+      "html": "<button class=\"ds-btn-outline\">Google Maps</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:9999px;font-weight:600;transition:background-color .15s cubic-bezier(.23,1,.32,1),border-color .15s,transform .15s cubic-bezier(.23,1,.32,1);height:44px;padding:0 16px;background:transparent;color:#000;border:1px solid rgb(0 0 0 / .2);font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:14px;} .ds-btn-outline:hover{border-color:#000} .ds-btn-outline:active{transform:scale(.97)} .ds-btn-outline:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Catalogue sections and size/colour choices; selected is black.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All <span>21</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Safety Shoes <span>4</span></button></div>",
+      "css": ".ds-chips{display:flex;gap:8px;flex-wrap:wrap} .ds-chip{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:9999px;font-weight:600;transition:background-color .15s cubic-bezier(.23,1,.32,1),border-color .15s,transform .15s cubic-bezier(.23,1,.32,1);height:44px;padding:0 16px;background:#fff;color:#000;border:1px solid #d8d3c9;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:14px;cursor:pointer} .ds-chip span{font-size:12px;opacity:.6} .ds-chip:hover{border-color:#000} .ds-chip[aria-pressed=true]{background:#000;color:#fff;border-color:#000} .ds-chip:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "chip",
+      "description": "Pill search with a leading icon; orange caret.",
+      "html": "<label class=\"ds-search\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input type=\"search\" placeholder=\"Search by name or code\"></label>",
+      "css": ".ds-search{position:relative;display:flex;align-items:center;width:288px;color:#55524b} .ds-search svg{position:absolute;left:16px} .ds-search input{height:44px;width:100%;border-radius:9999px;border:1px solid #d8d3c9;background:#fff;padding:0 16px 0 40px;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:14px;color:#000;caret-color:#fe5200} .ds-search input:hover{border-color:#000} .ds-search input:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    },
+    {
+      "name": "Product Tile",
+      "kind": "card",
+      "refersTo": "product-tile",
+      "description": "Square-cornered hang-tag tile: art well, code, SAMPLE tag, name, meta, WhatsApp pill and arrow.",
+      "html": "<article class=\"ds-tile\"><div class=\"ds-tile-art\"><span class=\"ds-tile-code\">KD-SS-101</span><span class=\"ds-tile-tag\">Sample</span></div><div class=\"ds-tile-body\"><h3>Black Hammer Low-Cut Lace-Up Safety Shoe</h3><p>Black Hammer · UK 5–12</p><div class=\"ds-tile-actions\"><button class=\"ds-tile-wa\"><span><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z\"/></svg></span>WhatsApp</button><span class=\"ds-tile-arrow\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg></span></div></div></article>",
+      "css": ".ds-tile{width:260px;background:#fff;border:1px solid #d8d3c9;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;transition:border-color .2s} .ds-tile:hover{border-color:#000} .ds-tile-art{position:relative;aspect-ratio:4/3;background:#f4f2ee;transition:background-color .2s} .ds-tile:hover .ds-tile-art{background:#ebe8e1} .ds-tile-code{position:absolute;top:12px;left:12px;font-family:var(--font-moderniz, Moderniz), 'Noto Sans SC', sans-serif;font-size:11.5px;color:rgb(0 0 0 / .75);text-transform:uppercase} .ds-tile-tag{position:absolute;top:10px;right:10px;background:#000;color:#fff;border-radius:2px;padding:4px 8px;font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase} .ds-tile-body{padding:20px} .ds-tile-body h3{margin:0;font-size:16.3px;line-height:1.35;font-weight:600} .ds-tile-body p{margin:6px 0 0;font-size:14px;color:#55524b} .ds-tile-actions{display:flex;align-items:center;gap:12px;padding-top:20px} .ds-tile-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:9999px;font-weight:600;transition:background-color .15s cubic-bezier(.23,1,.32,1),border-color .15s,transform .15s cubic-bezier(.23,1,.32,1);height:44px;padding:0 16px 0 12px;background:#000;color:#fff;border:0;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-size:14px} .ds-tile-wa span{color:#25d366;display:inline-flex} .ds-tile-arrow{margin-left:auto;display:grid;place-items:center;width:44px;height:44px;border-radius:9999px;border:1px solid #d8d3c9;transition:all .2s} .ds-tile:hover .ds-tile-arrow{background:#000;color:#fff;border-color:#000}"
+    },
+    {
+      "name": "Tagline Band",
+      "kind": "custom",
+      "refersTo": "tagline-band",
+      "description": "Orange band with three-bar hazard groups and the Malay tagline in Moderniz.",
+      "html": "<div class=\"ds-band\"><svg class=\"ds-band-l\" viewBox=\"0 0 356 181\" preserveAspectRatio=\"xMinYMid slice\" aria-hidden=\"true\"><path d=\"M0 0h60l42.5 181h-60zM128 0h60l42.5 181h-60zM253 0h60l42.5 181h-60z\"/></svg><p lang=\"ms\">MELINDUNGI SETIAP LANGKAH</p><svg class=\"ds-band-r\" viewBox=\"0 0 356 181\" preserveAspectRatio=\"xMaxYMid slice\" aria-hidden=\"true\"><path d=\"M0 0h60l42.5 181h-60zM128 0h60l42.5 181h-60zM253 0h60l42.5 181h-60z\"/></svg></div>",
+      "css": ".ds-band{position:relative;display:flex;align-items:center;justify-content:center;height:72px;background:#fe5200;color:#000;overflow:hidden} .ds-band svg{position:absolute;top:0;height:100%;width:142px;fill:#000} .ds-band-l{left:0} .ds-band-r{right:0} .ds-band p{margin:0;font-family:var(--font-moderniz, Moderniz), 'Noto Sans SC', sans-serif;font-size:24px;line-height:1;white-space:nowrap}"
+    },
+    {
+      "name": "MASUK Plaque",
+      "kind": "custom",
+      "refersTo": "masuk-plaque",
+      "description": "Orange door plaque leading into the catalogue; the arrow nudges and a hazard strip wipes in on hover.",
+      "html": "<a class=\"ds-masuk\" href=\"#\"><span class=\"ds-masuk-word\"><span lang=\"ms\">MASUK</span><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path d=\"M8 4l88 46-88 46 20-46z\"/></svg></span><span class=\"ds-masuk-line\">Step inside: browse all 21 products</span><span class=\"ds-masuk-strip\" aria-hidden=\"true\"></span></a>",
+      "css": ".ds-masuk{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:340px;min-height:224px;padding:24px;background:#fe5200;color:#000;text-decoration:none;overflow:hidden} .ds-masuk-word{display:flex;align-items:center;gap:.22em;font-size:46px;line-height:1;font-family:var(--font-moderniz, Moderniz), 'Noto Sans SC', sans-serif} .ds-masuk-word svg{width:.82em;height:.82em;fill:currentColor;transition:transform .3s cubic-bezier(.23,1,.32,1)} .ds-masuk:hover .ds-masuk-word svg{transform:translateX(.12em)} .ds-masuk-line{font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif;font-weight:600;font-size:17px;line-height:1.35;max-width:18rem} .ds-masuk-strip{position:absolute;left:0;right:0;bottom:0;height:8px;background-color:#fe5200;background-image:repeating-linear-gradient(76.7deg,#000 0 5.2px,transparent 5.2px 11.2px);clip-path:inset(0 100% 0 0);transition:clip-path .5s cubic-bezier(.23,1,.32,1)} .ds-masuk:hover .ds-masuk-strip{clip-path:inset(0 0 0 0)} .ds-masuk:focus-visible{outline:3px solid #000;outline-offset:3px}"
+    },
+    {
+      "name": "Signboard Nav",
+      "kind": "nav",
+      "refersTo": "button-outline",
+      "description": "Links along the signboard's top edge, the EN/BM/中文 switcher and the WhatsApp number pill.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Products</a><a href=\"#\">Brands</a><a href=\"#\">Branches</a><a href=\"#\">Contact</a><span class=\"ds-nav-sp\"></span><a href=\"#\" class=\"ds-lang is-active\">EN</a><a href=\"#\" class=\"ds-lang\">BM</a><a href=\"#\" class=\"ds-lang\">中文</a><a href=\"#\" class=\"ds-nav-wa\"><span><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z\"/></svg></span>019-662 8919</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:80px;padding:0 40px;background:#000;font-family:var(--font-poppins, Poppins), 'Noto Sans SC', system-ui, sans-serif} .ds-nav a{color:rgb(255 255 255 / .75);text-decoration:none;font-size:14.4px;font-weight:500;padding:12px;transition:color .15s} .ds-nav a:hover{color:#fff} .ds-nav-sp{flex:1} .ds-lang{position:relative;font-weight:600!important;font-size:12.8px!important;color:rgb(255 255 255 / .6)!important} .ds-lang.is-active{color:#fff!important} .ds-lang.is-active::after{content:'';position:absolute;left:10px;right:10px;bottom:6px;height:2px;background:#fe5200} .ds-nav-wa{display:inline-flex!important;align-items:center;gap:10px;margin-left:12px;border:1px solid rgb(255 255 255 / .25);border-radius:9999px;color:#fff!important;padding:10px 16px 10px 12px!important} .ds-nav-wa span{color:#25d366;display:inline-flex} .ds-nav-wa:hover{border-color:rgb(255 255 255 / .6)} .ds-nav a:focus-visible{outline:3px solid #fe5200;outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shop Signboard",
+    "overview": "The website is the shop that Klang Valley workers have already driven past. Every page opens on a face of the black acrylic signboard: white Moderniz caps, the orange shield, the shop's own small print. The orange tagline band with its black hazard stripes stitches each sign to the white shop floor below. The visual system comes straight from the client's brand guideline (Aug 2026): orange, black and white, Moderniz for display, Poppins for reading. The website adds only what a screen needs: a warm shop-floor neutral, hairlines, pill controls, and WhatsApp green.\n\nThe system is flat, loud where the sign is loud, and quiet where people read. Big fields of black and orange carry the identity. The floor stays white or a warm off-white so products and copy read clearly. Signage furniture does real jobs: the category board on the sign is navigation, the MASUK plaque is the way into the catalogue, the store directory is the category index, and each branch card is headed by its own small signboard.\n\nMotion is a single idea, \"setiap langkah\" (every step). Boot-sole prints step in, one at a time, as the visitor scrolls: across the three fitting steps, and down the shop floor beside the shop window. When reduced motion is on, or scroll timelines are unsupported, the prints are simply there.",
+    "keyCharacteristics": [
+      "Black signboard faces on top, orange hazard band as the seam, white shop floor beneath.",
+      "Moderniz caps for headings and sign labels; Poppins for everything people read.",
+      "Orange as whole fields, never as scattered accents.",
+      "WhatsApp green appears only on WhatsApp actions.",
+      "Flat surfaces; depth comes from field changes, not shadows."
+    ],
+    "rules": [
+      {
+        "name": "The Fields-Not-Flecks Rule",
+        "body": "Orange covers whole areas or nothing. No orange body text, no orange icons, no orange link underlines. The only small orange marks allowed are the slashes on the signboard's category board, the hazard seams, the focus ring and text selection.",
+        "section": "colors"
+      },
+      {
+        "name": "The Black-On-Orange Rule",
+        "body": "Anything set on orange is black. White on orange (3.3:1) is never used for text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Green-Means-WhatsApp Rule",
+        "body": "Green appears only where tapping opens WhatsApp. It is not a success colour, decoration or second accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signage Caps Rule",
+        "body": "Moderniz is always uppercase and only ever used for headings and short sign labels. Running text, captions and legal small print are never set in caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tagline Stays Malay Rule",
+        "body": "\"MELINDUNGI SETIAP LANGKAH\" and \"Selamat di tempat kerja, selamat sampai ke rumah\" are never translated in place. They carry `lang=\"ms\"`, and a translation, when shown, sits beneath in Poppins.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Fake Bold Rule",
+        "body": "Moderniz has one weight. `font-synthesis: none` stays on, so the browser never fakes bold or italic.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Sign Rule",
+        "body": "Sign faces are flat black: no bevels, gloss, brushed-metal textures or embossing to imitate acrylic or aluminium. The signboard is evoked by its layout and lettering, never by faked material.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do open every page on a black sign face, and keep the orange hazard seam between the sign and the white floor.",
+      "Do set section titles and sign labels in uppercase Moderniz, and everything people read in Poppins.",
+      "Do put black text on orange, and keep orange to whole fields (band, plaque, panels, lit directory rows).",
+      "Do give every product a WhatsApp action that pre-fills the product name, code, choices and page link.",
+      "Do keep the SAMPLE tag on any listing that is still a placeholder, and remove it only when a real product and photo replace it.",
+      "Do keep touch targets at 44px or more, and keep the floating WhatsApp button clear of content on phones."
+    ],
+    "donts": [
+      "Don't use orange for body text, icons or link underlines (the Fields-Not-Flecks Rule).",
+      "Don't use green anywhere a tap does not open WhatsApp.",
+      "Don't translate or re-letter \"MELINDUNGI SETIAP LANGKAH\", or redraw the logo; use the vector paths.",
+      "Don't imitate acrylic, metal or reflective materials with bevels, gloss or textures.",
+      "Don't add eyebrow labels above headings, gradient text, glass panels or decorative shadows.",
+      "Don't show prices or claim that Kainos Dagang is an \"authorised dealer\" of any brand."
+    ]
+  }
+}

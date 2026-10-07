@@ -1,0 +1,33 @@
+{
+  "hook": {
+    "enabled": true,
+    "limits": {
+      "maxFindings": 5,
+      "maxChars": 8000
+    }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-06T11:00:21.976Z",
+        "reason": "Agent: hazard stripes are the brand guideline's tagline-band motif (Kainos Dagang Brand Guideline, Aug 2026; user asked for the given theme)"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "components/product-tile.tsx"
+        ],
+        "createdAt": "2026-10-06T11:00:21.984Z",
+        "reason": "Agent: flush full-bleed media well at the top of the product tile (photo slot), not an inset card"
+      }
+    ]
+  }
+}

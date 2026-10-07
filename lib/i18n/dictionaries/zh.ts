@@ -1,0 +1,163 @@
+import type { Dictionary } from "./en";
+
+const zh: Dictionary = {
+  meta: {
+    title: "Kainos Dagang | 安全鞋与安全装备 · 巴生谷",
+    description:
+      "Black Hammer 等品牌的安全鞋、安全靴、安全帽、手套、反光背心、袜子及工地安全用品。欢迎到 Taman Equine、哥打白沙罗和巴生门店试穿，或通过 WhatsApp 咨询。",
+    productsTitle: "全部产品",
+    productsDescription:
+      "浏览安全鞋、安全靴、安全帽、手套、护目护耳用品、反光背心、袜子和工地安全用品。任何商品都可以通过 WhatsApp 咨询。",
+  },
+  nav: {
+    home: "首页",
+    products: "产品",
+    brands: "品牌",
+    branches: "门店",
+    contact: "联系我们",
+    menu: "菜单",
+    close: "关闭",
+    language: "语言",
+    skip: "跳到正文",
+    primary: "主导航",
+    breadcrumb: "当前位置",
+  },
+  whatsapp: {
+    cta: "WhatsApp 联系我们",
+    short: "WhatsApp",
+    float: "在 WhatsApp 上和我们聊聊",
+    quote: "索取报价",
+    askAbout: "通过 WhatsApp 咨询 {name}",
+  },
+  sign: {
+    hookTitle: "安全鞋与安全装备，到店试穿挑选。",
+    hookBody: "Black Hammer、Kickers 等品牌。巴生谷三家门店。有任何问题，WhatsApp 问我们。",
+    owner: "所有者",
+    directoryLabel: "按类别选购",
+  },
+  tagline: "守护每一步",
+  masuk: {
+    word: "进店",
+    line: "欢迎进店：浏览全部 {count} 款产品",
+  },
+  window: {
+    title: "橱窗精选",
+    intro: "先看看我们的货架。点击任意商品的 WhatsApp 按钮，询问库存和尺码。",
+    viewAll: "查看全部产品",
+  },
+  directory: {
+    title: "店内导览",
+    intro: "货架上的全部商品，按区域分类。",
+    count: { one: "{count} 款产品", other: "{count} 款产品" },
+  },
+  brands: {
+    title: "店内品牌",
+    body: "我们经营 Black Hammer、Kickers 等知名安全品牌，店内还有更多。",
+    blackHammer: "安全鞋与安全靴",
+    more: "店内还有更多品牌",
+    moreBody: "想找特定品牌或型号？WhatsApp 问我们。",
+  },
+  fitting: {
+    title: "进店，试穿，安全回家。",
+    intro: "安全鞋只有合脚，才能真正保护你。所以我们更希望你到店里来。",
+    steps: [
+      {
+        title: "告诉我们你的工作",
+        body: "建筑工地、工厂车间、厨房还是种植园：你站的地面，决定了你需要什么。",
+      },
+      {
+        title: "多试几个尺码",
+        body: "每双脚都不同，每个品牌也不同。穿上工作袜，多试几双。",
+      },
+      {
+        title: "带走最合适的一双",
+        body: "鞋头不压脚，脚跟贴合，鞋底适合你的地面。",
+      },
+    ],
+    bulkTitle: "要给整个团队配备？",
+    bulkBody:
+      "我们为公司和承包商处理批量订单：团队需要的各种尺码安全鞋，加上安全帽、反光背心和手套，一张报价单搞定。",
+    consultTitle: "不确定工地需要什么？",
+    consultBody: "告诉我们你的工地情况，我们帮你确定团队需要的防护装备。",
+  },
+  branchesSection: {
+    title: "门店地址",
+    intro: "巴生谷三家门店。欢迎到店试穿，出发前也可以先致电门店。",
+    call: "致电",
+    directions: "Google 地图",
+    waze: "Waze",
+    mainLine: "主线与 WhatsApp",
+    email: "电邮",
+  },
+  hours: {
+    title: "营业时间",
+    scope: "三家门店营业时间相同",
+    today: "今天",
+    days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+    through: "至",
+  },
+  closing: {
+    headline: "安全上班，",
+    headlineAccent: "平安回家。",
+    cta: "WhatsApp 问我们",
+  },
+  footer: {
+    shop: "选购",
+    contact: "联系我们",
+    rights: "版权所有。",
+  },
+  catalogue: {
+    title: "全部产品",
+    intro:
+      "按区域浏览，或按名称、编号搜索。价格和库存会变动，点击任意商品的 WhatsApp，我们会回复最新信息。",
+    sampleNote: "以下为示例商品，完整目录正在准备中。",
+    search: "搜索名称或编号",
+    all: "全部",
+    brand: "品牌",
+    anyBrand: "全部品牌",
+    category: "区域",
+    results: { one: "{count} 款产品", other: "{count} 款产品" },
+    clear: "清除筛选",
+    emptyTitle: "暂时没有符合的产品",
+    emptyBody: "换个关键词试试，或者直接问我们，店里可能就有。",
+  },
+  product: {
+    code: "编号",
+    sample: "示例",
+    sampleNote: "示例商品：图片和详情将更新为我们的实际库存。",
+    size: "尺码",
+    chooseSize: "选择尺码（可选）",
+    colours: "颜色",
+    quantity: "数量",
+    decrease: "减少数量",
+    increase: "增加数量",
+    enquire: "WhatsApp 咨询这款产品",
+    enquireNote: "消息会自动带上产品名称、编号和你的选择。",
+    call: "或致电 {phone}",
+    tryInStore: "到门店试穿",
+    features: "产品特点",
+    suitableFor: "适用场合",
+    related: "你可能还需要",
+    details: "详情",
+    backToProducts: "全部产品",
+    pack: "包装",
+  },
+  uses: {
+    construction: "建筑工地",
+    factory: "工厂",
+    warehouse: "仓库",
+    logistics: "物流",
+    workshop: "车间",
+    "oil-gas": "石油天然气",
+    food: "食品加工",
+    plantation: "种植园",
+    roadworks: "道路工程",
+  },
+  notFound: {
+    title: "这排货架是空的",
+    body: "你要找的页面不在这里，可能已经移动，或链接有误。",
+    cta: "回到店里",
+  },
+};
+
+export default zh;
