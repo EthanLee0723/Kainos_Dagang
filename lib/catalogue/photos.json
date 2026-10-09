@@ -1,0 +1,538 @@
+{
+  "as2528": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "bh-0991": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-0993": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-1102rs": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2331": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-2332": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2333": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-2334": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-2335": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2336": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2607": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-2608": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2609": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-2610": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "bh-2881": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-2882": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-2885": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-2889": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-3887": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-3888": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-3889": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-4101": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4102": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4103": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4107": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4108": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4109": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4501": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "bh-4602": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4654": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4658": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-4659": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4660": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-4663": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-4664": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-4664-l": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4665": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4666": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-4671": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4671-l": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4672": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4672-l": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4701": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-4751": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4755": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "bh-4881": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4883": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4884": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4891": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "bh-4892": {
+    "count": 3,
+    "fit": "cover"
+  },
+  "bh-4991": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4992": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4993": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-4994": {
+    "count": 1,
+    "fit": "cover"
+  },
+  "bh-8001": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-8002": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-8003": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-8004": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh-ll-2": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "bh-ll-2-106": {
+    "count": 4,
+    "fit": "contain"
+  },
+  "bh-ll-3": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-ll-4": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh-ll-5": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh0993-2-sp": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bh0993-779": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh2-3890": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh2-3891": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh2-3892": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh2016-008-b": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bh2019-004": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhc-s077": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhc-s077-t-ht": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhc-s085": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201604": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhs-201610": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201611": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201612": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201622": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhs-201628": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201629": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-201630": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs-26618": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhs22003": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs22004": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs22004-b": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs22005": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs22006": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs26622": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhs26623": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs26624": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "bhs26625": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bhs26626": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "bkfl1768": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "bkfl1998": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "brfl1768": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "brfl1998": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "brfl2840": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "brfl2986": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "cmfl2986": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "ham-3001gk": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ham-3002gk": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "ham-3003gk": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ham-3004gk": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ham-3008gk": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "ham-3010gk": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "ham-4401": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ham-4402": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "ham-4403": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ham-4404": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "ham-4405": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "kickers-as2512-ankle": {
+    "count": 6,
+    "fit": "contain"
+  },
+  "kickers-as2512-low": {
+    "count": 6,
+    "fit": "contain"
+  },
+  "mesh-reflective-safety-vest": {
+    "count": 5,
+    "fit": "cover"
+  },
+  "msa-v-gard-helmet": {
+    "count": 6,
+    "fit": "contain"
+  },
+  "proguard-advanlite-2-helmet": {
+    "count": 7,
+    "fit": "cover"
+  },
+  "reflective-safety-vest-pockets": {
+    "count": 3,
+    "fit": "contain"
+  },
+  "sfc-8300-1-ht": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "sfc-8300-2-ht": {
+    "count": 2,
+    "fit": "contain"
+  },
+  "sfc-8300-3-ht": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "sfc-sp8021": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "tkt-50008": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "tkt-50009": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "tkt-50010": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "tkt-50011": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "tkt-50012": {
+    "count": 2,
+    "fit": "cover"
+  },
+  "toe-sp004": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "toe-sp006": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "toe-sp007": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "toe-sr1002": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "toe-sr1003": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "toe-sr1004": {
+    "count": 1,
+    "fit": "contain"
+  },
+  "ty2-3066": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "ty2-3068": {
+    "count": 5,
+    "fit": "contain"
+  },
+  "ty2-3069": {
+    "count": 5,
+    "fit": "contain"
+  }
+}

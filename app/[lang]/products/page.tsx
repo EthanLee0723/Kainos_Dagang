@@ -7,7 +7,7 @@ import { container } from "@/components/ui";
 import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
-import { categories, products } from "@/lib/products";
+import { brands, categories, products, productsByBrand } from "@/lib/products";
 import { pick } from "@/lib/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
 
@@ -33,13 +33,12 @@ export default async function ProductsPage() {
     slug: p.slug,
     category: p.category,
     brand: p.brand,
-    haystack: [p.name.en, p.name.ms, p.name.zh, p.code, p.brand ?? ""]
+    haystack: [p.name.en, p.name.ms, p.name.zh, p.code, p.code.replace(/[^a-z0-9]/gi, ""), p.brand ?? ""]
       .join(" ")
       .toLowerCase()
       .normalize("NFKD"),
   }));
-  const productBrands = [...new Set(products.flatMap((p) => (p.brand ? [p.brand] : [])))];
-  const hasSamples = products.some((p) => p.sample);
+  const productBrands = brands.filter((b) => productsByBrand(b.name).length > 0).map((b) => b.name);
 
   return (
     <>
@@ -50,15 +49,7 @@ export default async function ProductsPage() {
             <h1 className="font-display text-[2.4rem] leading-[0.95] uppercase sm:text-[3.4rem] lg:text-[4.2rem]">
               {dict.catalogue.title}
             </h1>
-            <div className="max-w-xl">
-              <p className="leading-relaxed text-muted">{dict.catalogue.intro}</p>
-              {hasSamples && (
-                <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium">
-                  <span aria-hidden className="size-2 rounded-full bg-orange" />
-                  {dict.catalogue.sampleNote}
-                </p>
-              )}
-            </div>
+            <p className="max-w-xl leading-relaxed text-muted">{dict.catalogue.intro}</p>
           </div>
         </div>
         <div className={`${container} pb-20 lg:pb-28`}>

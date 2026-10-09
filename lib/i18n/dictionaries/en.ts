@@ -2,10 +2,10 @@ const en = {
   meta: {
     title: "Kainos Dagang | Safety Shoes & Safety Gear, Klang Valley",
     description:
-      "Safety shoes, boots, helmets, gloves, vests, socks and site safety gear from Black Hammer and more. Try them on at our shops in Taman Equine, Kota Damansara and Klang, or ask us on WhatsApp.",
+      "Safety shoes, boots, rain boots, kitchen clogs, helmets and reflective vests from Black Hammer, Kickers, Tanker Tec, MSA and more. Try them on at our shops in Taman Equine, Kota Damansara and Klang, or ask us on WhatsApp.",
     productsTitle: "All products",
     productsDescription:
-      "Browse safety shoes, boots, helmets, gloves, eye and ear protection, vests, socks and site safety gear. Ask about any item on WhatsApp.",
+      "Browse safety shoes, boots, kitchen footwear, helmets and reflective vests from Black Hammer, Kickers, Tanker Tec, MSA and more. Ask about any item on WhatsApp.",
   },
   nav: {
     home: "Home",
@@ -52,8 +52,9 @@ const en = {
   },
   brands: {
     title: "Brands on our shelves",
-    body: "We stock established safety brands like Black Hammer and Kickers, with more in store.",
-    blackHammer: "Safety shoes and boots",
+    body: "We stock established safety brands like Black Hammer, Kickers and MSA, with more in store.",
+    comingSoon: "Coming soon",
+    viewRange: "See the range",
     more: "More brands in store",
     moreBody: "Looking for a particular brand or model? Ask us on WhatsApp.",
   },
@@ -77,7 +78,7 @@ const en = {
     ],
     bulkTitle: "Kitting out a whole crew?",
     bulkBody:
-      "We handle bulk orders for companies and contractors: safety shoes in every size your team needs, plus helmets, vests and gloves, on one quotation.",
+      "We handle bulk orders for companies and contractors: safety shoes in every size your team needs, plus helmets and vests, on one quotation.",
     consultTitle: "Not sure what your site needs?",
     consultBody:
       "Tell us about your site and we'll help you work out the protection your team needs.",
@@ -113,7 +114,6 @@ const en = {
     title: "All products",
     intro:
       "Browse by section or search by name or code. Prices and stock change, so tap WhatsApp on any item and we'll reply with the latest.",
-    sampleNote: "These are sample listings while we prepare our full catalogue.",
     search: "Search by name or code",
     all: "All",
     brand: "Brand",
@@ -126,8 +126,7 @@ const en = {
   },
   product: {
     code: "Code",
-    sample: "Sample",
-    sampleNote: "Sample listing: the photo and details will be updated with our real stock.",
+    showPhoto: "Show photo {n}",
     size: "Size",
     chooseSize: "Pick a size (optional)",
     colours: "Colours",
@@ -155,6 +154,7 @@ const en = {
     food: "Food processing",
     plantation: "Plantation",
     roadworks: "Roadworks",
+    hospitality: "Kitchens & hospitality",
   },
   notFound: {
     title: "This aisle is empty",

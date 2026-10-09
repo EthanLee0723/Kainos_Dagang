@@ -4,10 +4,10 @@ const zh: Dictionary = {
   meta: {
     title: "Kainos Dagang | 安全鞋与安全装备 · 巴生谷",
     description:
-      "Black Hammer 等品牌的安全鞋、安全靴、安全帽、手套、反光背心、袜子及工地安全用品。欢迎到 Taman Equine、哥打白沙罗和巴生门店试穿，或通过 WhatsApp 咨询。",
+      "Black Hammer、Kickers、Tanker Tec、MSA 等品牌的安全鞋、安全靴、雨靴、厨房洞洞鞋、安全帽和反光背心。欢迎到 Taman Equine、哥打白沙罗和巴生门店试穿，或通过 WhatsApp 咨询。",
     productsTitle: "全部产品",
     productsDescription:
-      "浏览安全鞋、安全靴、安全帽、手套、护目护耳用品、反光背心、袜子和工地安全用品。任何商品都可以通过 WhatsApp 咨询。",
+      "浏览 Black Hammer、Kickers、Tanker Tec、MSA 等品牌的安全鞋、安全靴、厨房鞋、安全帽和反光背心。任何商品都可以通过 WhatsApp 咨询。",
   },
   nav: {
     home: "首页",
@@ -52,8 +52,9 @@ const zh: Dictionary = {
   },
   brands: {
     title: "店内品牌",
-    body: "我们经营 Black Hammer、Kickers 等知名安全品牌，店内还有更多。",
-    blackHammer: "安全鞋与安全靴",
+    body: "我们经营 Black Hammer、Kickers、MSA 等知名安全品牌，店内还有更多。",
+    comingSoon: "即将上架",
+    viewRange: "查看系列",
     more: "店内还有更多品牌",
     moreBody: "想找特定品牌或型号？WhatsApp 问我们。",
   },
@@ -76,7 +77,7 @@ const zh: Dictionary = {
     ],
     bulkTitle: "要给整个团队配备？",
     bulkBody:
-      "我们为公司和承包商处理批量订单：团队需要的各种尺码安全鞋，加上安全帽、反光背心和手套，一张报价单搞定。",
+      "我们为公司和承包商处理批量订单：团队需要的各种尺码安全鞋，加上安全帽和反光背心，一张报价单搞定。",
     consultTitle: "不确定工地需要什么？",
     consultBody: "告诉我们你的工地情况，我们帮你确定团队需要的防护装备。",
   },
@@ -110,7 +111,6 @@ const zh: Dictionary = {
     title: "全部产品",
     intro:
       "按区域浏览，或按名称、编号搜索。价格和库存会变动，点击任意商品的 WhatsApp，我们会回复最新信息。",
-    sampleNote: "以下为示例商品，完整目录正在准备中。",
     search: "搜索名称或编号",
     all: "全部",
     brand: "品牌",
@@ -123,8 +123,7 @@ const zh: Dictionary = {
   },
   product: {
     code: "编号",
-    sample: "示例",
-    sampleNote: "示例商品：图片和详情将更新为我们的实际库存。",
+    showPhoto: "查看第 {n} 张图片",
     size: "尺码",
     chooseSize: "选择尺码（可选）",
     colours: "颜色",
@@ -152,6 +151,7 @@ const zh: Dictionary = {
     food: "食品加工",
     plantation: "种植园",
     roadworks: "道路工程",
+    hospitality: "厨房与餐饮",
   },
   notFound: {
     title: "这排货架是空的",

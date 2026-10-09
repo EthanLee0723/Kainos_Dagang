@@ -4,10 +4,10 @@ const ms: Dictionary = {
   meta: {
     title: "Kainos Dagang | Kasut & Peralatan Keselamatan, Lembah Klang",
     description:
-      "Kasut keselamatan, but, topi keselamatan, sarung tangan, vest, stokin dan peralatan keselamatan tapak daripada Black Hammer dan banyak lagi. Cuba di kedai kami di Taman Equine, Kota Damansara dan Klang, atau tanya kami di WhatsApp.",
+      "Kasut keselamatan, but, but hujan, klog dapur, topi keselamatan dan vest pemantul cahaya daripada Black Hammer, Kickers, Tanker Tec, MSA dan banyak lagi. Cuba di kedai kami di Taman Equine, Kota Damansara dan Klang, atau tanya kami di WhatsApp.",
     productsTitle: "Semua produk",
     productsDescription:
-      "Lihat kasut keselamatan, but, topi keselamatan, sarung tangan, pelindung mata dan telinga, vest, stokin dan peralatan keselamatan tapak. Tanya tentang mana-mana barang di WhatsApp.",
+      "Lihat kasut keselamatan, but, kasut dapur, topi keselamatan dan vest pemantul cahaya daripada Black Hammer, Kickers, Tanker Tec, MSA dan banyak lagi. Tanya tentang mana-mana barang di WhatsApp.",
   },
   nav: {
     home: "Utama",
@@ -54,8 +54,9 @@ const ms: Dictionary = {
   },
   brands: {
     title: "Jenama di rak kami",
-    body: "Kami menjual jenama keselamatan yang terkenal seperti Black Hammer dan Kickers, dan banyak lagi di kedai.",
-    blackHammer: "Kasut dan but keselamatan",
+    body: "Kami menjual jenama keselamatan yang terkenal seperti Black Hammer, Kickers dan MSA, dan banyak lagi di kedai.",
+    comingSoon: "Akan datang",
+    viewRange: "Lihat rangkaian",
     more: "Lebih banyak jenama di kedai",
     moreBody: "Mencari jenama atau model tertentu? Tanya kami di WhatsApp.",
   },
@@ -79,7 +80,7 @@ const ms: Dictionary = {
     ],
     bulkTitle: "Melengkapkan seluruh pasukan?",
     bulkBody:
-      "Kami mengendalikan tempahan pukal untuk syarikat dan kontraktor: kasut keselamatan dalam setiap saiz yang diperlukan pasukan anda, serta topi, vest dan sarung tangan, dalam satu sebut harga.",
+      "Kami mengendalikan tempahan pukal untuk syarikat dan kontraktor: kasut keselamatan dalam setiap saiz yang diperlukan pasukan anda, serta topi dan vest, dalam satu sebut harga.",
     consultTitle: "Tidak pasti apa yang tapak anda perlukan?",
     consultBody:
       "Ceritakan tentang tapak anda dan kami akan bantu menentukan perlindungan yang diperlukan pasukan anda.",
@@ -115,7 +116,6 @@ const ms: Dictionary = {
     title: "Semua produk",
     intro:
       "Lihat mengikut bahagian atau cari mengikut nama atau kod. Harga dan stok sentiasa berubah, jadi tekan WhatsApp pada mana-mana barang dan kami akan membalas dengan maklumat terkini.",
-    sampleNote: "Ini ialah senarai contoh sementara kami menyediakan katalog penuh.",
     search: "Cari nama atau kod",
     all: "Semua",
     brand: "Jenama",
@@ -128,8 +128,7 @@ const ms: Dictionary = {
   },
   product: {
     code: "Kod",
-    sample: "Contoh",
-    sampleNote: "Senarai contoh: gambar dan butiran akan dikemas kini dengan stok sebenar kami.",
+    showPhoto: "Tunjuk gambar {n}",
     size: "Saiz",
     chooseSize: "Pilih saiz (pilihan)",
     colours: "Warna",
@@ -157,6 +156,7 @@ const ms: Dictionary = {
     food: "Pemprosesan makanan",
     plantation: "Ladang",
     roadworks: "Kerja jalan raya",
+    hospitality: "Dapur & hospitaliti",
   },
   notFound: {
     title: "Lorong ini kosong",

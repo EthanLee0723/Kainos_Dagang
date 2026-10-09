@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductEnquiry } from "@/components/product-enquiry";
+import { codeTag } from "@/components/photo-class";
+import { ProductGallery } from "@/components/product-gallery";
 import { ProductArt, ProductTile } from "@/components/product-tile";
 import { SiteHeader } from "@/components/site-header";
 import { container } from "@/components/ui";
@@ -45,7 +47,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
   const sizes = product.sizes && {
     label: pick(product.sizes.label, locale),
     values: product.sizes.values,
-    prefix: product.sizes.label.en.startsWith("UK") ? "UK " : "",
+    prefix: /^(UK|EU)\b/.test(product.sizes.label.en) ? `${product.sizes.label.en.slice(0, 2)} ` : "",
   };
 
   const jsonLd = {
@@ -57,6 +59,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
     category: pick(category.name, locale),
     url: `${siteUrl}/${locale}/products/${product.slug}`,
     ...(product.brand ? { brand: { "@type": "Brand", name: product.brand } } : {}),
+    ...(product.image ? { image: `${siteUrl}${product.image}` } : {}),
   };
 
   return (
@@ -87,21 +90,25 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
 
           <div className="grid gap-10 pb-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16 lg:pb-24">
             <div className="lg:sticky lg:top-6 lg:self-start">
-              <div className="relative">
-                <ProductArt
-                  product={product}
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="aspect-square border border-line"
+              {product.image ? (
+                <ProductGallery
+                  images={[product.image, ...(product.gallery ?? [])]}
+                  fit={product.imageFit}
+                  code={product.code}
+                  alt={name}
+                  labels={{ show: dict.product.showPhoto }}
                 />
-                <span className="font-display tabular absolute top-4 left-4 text-sm text-ink/70">{product.code}</span>
-                {product.sample && (
-                  <span className="absolute top-3.5 right-3.5 rounded-sm bg-ink px-2.5 py-1 text-[0.78rem] font-semibold tracking-wider text-paper uppercase">
-                    {dict.product.sample}
-                  </span>
-                )}
-              </div>
-              {product.sample && <p className="mt-3 text-sm text-muted">{dict.product.sampleNote}</p>}
+              ) : (
+                <div className="relative">
+                  <ProductArt
+                    product={product}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="aspect-square border border-line"
+                  />
+                  <span className={`${codeTag} top-3.5 left-3.5 text-sm`}>{product.code}</span>
+                </div>
+              )}
             </div>
 
             <div>
