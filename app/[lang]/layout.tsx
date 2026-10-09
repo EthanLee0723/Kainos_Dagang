@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_SC, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { htmlLang, locales } from "@/lib/i18n/config";
@@ -61,6 +62,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   return (
     <html
       lang={htmlLang[locale]}
+      data-scroll-behavior="smooth"
       className={`${moderniz.variable} ${poppins.variable} ${notoSansSC.variable}`}
     >
       <body className="min-h-dvh">
@@ -73,6 +75,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         {children}
         <SiteFooter dict={dict} locale={locale} />
         <WhatsAppFloat locale={locale} label={dict.whatsapp.float} />
+        <ScrollReveal />
       </body>
     </html>
   );

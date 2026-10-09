@@ -12,7 +12,7 @@ export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale })
   return (
     <section id="branches" aria-labelledby="branches-title" className="scroll-mt-4 bg-floor">
       <div className={`${container} py-16 sm:py-20 lg:py-24`}>
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+        <div data-reveal className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <h2 id="branches-title" className="font-display text-[2.2rem] leading-[0.95] uppercase sm:text-[3rem]">
             {dict.branchesSection.title}
           </h2>
@@ -21,7 +21,7 @@ export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale })
 
         <ul className="mt-10 grid gap-5 lg:mt-14 lg:grid-cols-3">
           {branches.map((branch) => (
-            <li key={branch.id} className="flex flex-col border border-line bg-paper">
+            <li key={branch.id} data-reveal className="flex flex-col border border-line bg-paper transition-colors duration-200 hover:border-ink/40">
               <div className="flex items-center gap-3 bg-ink px-5 py-5 text-paper sm:px-6">
                 <LogoMark label={null} className="h-8 w-auto shrink-0 text-orange" />
                 <h3 className="font-display text-[1.2rem] leading-none uppercase sm:text-[1.35rem]">{branch.name}</h3>
@@ -64,12 +64,14 @@ export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale })
             </li>
           ))}
         </ul>
-        <OpeningHoursPlate
+        <div data-reveal>
+          <OpeningHoursPlate
           rows={hoursRows(locale, dict.hours)}
           title={dict.hours.title}
           scope={dict.hours.scope}
-          todayLabel={dict.hours.today}
-        />
+            todayLabel={dict.hours.today}
+          />
+        </div>
       </div>
     </section>
   );

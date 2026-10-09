@@ -37,7 +37,7 @@ export function NavRow({
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="inline-flex h-11 items-center px-3 text-[0.9rem] font-medium text-paper/75 transition-colors duration-150 hover:text-paper"
+                className="relative inline-flex h-11 items-center px-3 text-[0.9rem] font-medium text-paper/75 transition-colors duration-150 after:absolute after:inset-x-3 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-paper after:transition-transform after:duration-300 after:ease-out-strong hover:text-paper hover:after:scale-x-100"
               >
                 {item.label}
               </Link>

@@ -79,7 +79,7 @@ export function ShopWindow({ dict, locale }: { dict: Dictionary; locale: Locale 
 
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {featuredProducts.map((product, i) => (
-              <li key={product.slug} className="flex">
+              <li key={product.slug} data-reveal className="flex">
                 <ProductTile product={product} locale={locale} dict={dict} priority={i < 4} />
               </li>
             ))}

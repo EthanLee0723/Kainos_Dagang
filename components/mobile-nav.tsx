@@ -34,7 +34,7 @@ export function MobileNav({ locale, items, labels, whatsappHref }: Props) {
       <dialog
         ref={dialog}
         aria-label={labels.menu}
-        className="m-0 h-dvh max-h-none w-full max-w-none bg-ink p-0 text-paper backdrop:bg-ink/60 open:flex open:flex-col"
+        className="menu-sheet m-0 h-dvh max-h-none w-full max-w-none bg-ink p-0 text-paper backdrop:bg-ink/60 open:flex open:flex-col"
       >
         <div className="flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6">
           <LanguageSwitcher current={locale} label={labels.language} className="text-paper" />
@@ -51,8 +51,12 @@ export function MobileNav({ locale, items, labels, whatsappHref }: Props) {
         <div className="hazard h-2 bg-orange [--hazard-h:16px]" aria-hidden />
         <nav className="flex-1 overflow-y-auto px-4 pt-6 sm:px-6">
           <ul>
-            {items.map((item) => (
-              <li key={item.href} className="border-b border-ink-line">
+            {items.map((item, i) => (
+              <li
+                key={item.href}
+                className="menu-item border-b border-ink-line"
+                style={{ "--i": i } as React.CSSProperties}
+              >
                 <Link
                   href={item.href}
                   onClick={close}
@@ -64,7 +68,7 @@ export function MobileNav({ locale, items, labels, whatsappHref }: Props) {
             ))}
           </ul>
         </nav>
-        <div className="p-4 sm:p-6">
+        <div className="menu-item p-4 sm:p-6" style={{ "--i": items.length } as React.CSSProperties}>
           <a
             href={whatsappHref}
             target="_blank"

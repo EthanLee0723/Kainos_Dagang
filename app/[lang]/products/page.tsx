@@ -45,7 +45,7 @@ export default async function ProductsPage() {
       <SiteHeader dict={dict} locale={locale} />
       <main id="main" className="bg-paper">
         <div className={`${container} pt-10 pb-6 sm:pt-14 lg:pt-16`}>
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <div className="rise flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
             <h1 className="font-display text-[2.4rem] leading-[0.95] uppercase sm:text-[3.4rem] lg:text-[4.2rem]">
               {dict.catalogue.title}
             </h1>

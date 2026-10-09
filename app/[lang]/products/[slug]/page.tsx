@@ -95,6 +95,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
                   images={[product.image, ...(product.gallery ?? [])]}
                   fit={product.imageFit}
                   code={product.code}
+                  slug={product.slug}
                   alt={name}
                   labels={{ show: dict.product.showPhoto }}
                 />
@@ -111,7 +112,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
               )}
             </div>
 
-            <div>
+            <div className="rise [--rise-delay:80ms]">
               <h1 className="text-[1.9rem] leading-[1.12] font-semibold tracking-[-0.015em] sm:text-[2.4rem]">
                 {name}
               </h1>
@@ -198,12 +199,12 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
 
         <section aria-labelledby="related-title" className="border-t border-line bg-floor">
           <div className={`${container} py-14 lg:py-20`}>
-            <h2 id="related-title" className="font-display text-[1.6rem] uppercase sm:text-[2rem]">
+            <h2 id="related-title" data-reveal className="font-display text-[1.6rem] uppercase sm:text-[2rem]">
               {dict.product.related}
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {relatedProducts(product).map((p) => (
-                <li key={p.slug} className="flex">
+                <li key={p.slug} data-reveal className="flex">
                   <ProductTile product={p} locale={locale} dict={dict} />
                 </li>
               ))}

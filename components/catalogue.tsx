@@ -179,7 +179,7 @@ export function Catalogue({ items, tiles, categories, brands, labels, locale, wh
       {visible.length > 0 ? (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visible.map((item) => (
-            <li key={item.slug} className="flex">
+            <li key={item.slug} data-reveal className="flex">
               {tiles[item.slug]}
             </li>
           ))}

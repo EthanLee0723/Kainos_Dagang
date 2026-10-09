@@ -14,7 +14,7 @@ export function Brands({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   return (
     <section id="brands" aria-labelledby="brands-title" className="scroll-mt-4 bg-floor">
       <div className={`${container} grid gap-10 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-16 lg:py-24`}>
-        <div>
+        <div data-reveal>
           <h2 id="brands-title" className="font-display text-[2rem] leading-[0.95] uppercase sm:text-[2.6rem]">
             {dict.brands.title}
           </h2>
@@ -27,10 +27,15 @@ export function Brands({ dict, locale }: { dict: Dictionary; locale: Locale }) {
             return (
               <li
                 key={brand.name}
-                className="flex flex-col gap-2 border-b border-ink/15 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6"
+                data-reveal
+                className="group relative flex flex-col gap-2 border-b border-ink/15 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6"
               >
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <p className="font-display text-[1.7rem] leading-none uppercase sm:text-[2.1rem] lg:text-[2.4rem]">
+                  <p
+                    className={`font-display text-[1.7rem] leading-none uppercase sm:text-[2.1rem] lg:text-[2.4rem] ${
+                      count > 0 ? "transition-transform duration-300 ease-out-strong group-hover:translate-x-2" : ""
+                    }`}
+                  >
                     {brand.name}
                   </p>
                   {brand.comingSoon && (
@@ -44,7 +49,7 @@ export function Brands({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                   {count > 0 && (
                     <Link
                       href={`/${locale}/products?brand=${encodeURIComponent(brand.name)}`}
-                      className="group inline-flex h-11 items-center gap-2 text-[0.95rem] font-semibold"
+                      className="inline-flex h-11 items-center gap-2 text-[0.95rem] font-semibold after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-3 focus-visible:after:outline-orange"
                     >
                       <span className="underline decoration-line decoration-2 underline-offset-[6px] transition-colors group-hover:decoration-ink">
                         {dict.brands.viewRange}
@@ -57,7 +62,7 @@ export function Brands({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               </li>
             );
           })}
-          <li className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-8">
+          <li data-reveal className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-8">
             <div>
               <p className="text-[1.05rem] font-semibold">{dict.brands.more}</p>
               <p className="mt-1 max-w-[42ch] text-sm leading-relaxed text-muted">{dict.brands.moreBody}</p>

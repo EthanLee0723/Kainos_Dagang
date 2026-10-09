@@ -1,12 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { format } from "@/lib/i18n/format";
 import { type Product, sizeSummary } from "@/lib/products";
 import { pick } from "@/lib/site";
-import { codeTag, photoClass } from "./photo-class";
+import { codeTag, photoClass, photoTransition } from "./photo-class";
 import { Pictogram } from "./pictogram";
 import { ProductWhatsAppLink } from "./product-whatsapp-link";
 import { WhatsAppIcon } from "./whatsapp-icon";
@@ -23,14 +24,19 @@ export function ProductArt({
   className?: string;
   priority?: boolean;
 }) {
-  return (
-    <div className={`relative overflow-hidden bg-floor [--pict-bg:var(--color-floor)] ${className}`}>
-      {product.image ? (
-        <Image src={product.image} alt="" fill sizes={sizes} priority={priority} quality={85} className={photoClass(product.imageFit)} />
-      ) : (
+  if (!product.image) {
+    return (
+      <div className={`relative overflow-hidden bg-floor [--pict-bg:var(--color-floor)] ${className}`}>
         <Pictogram name={product.pictogram} className="absolute inset-x-[14%] inset-y-[16%] h-auto w-[72%] text-ink" />
-      )}
-    </div>
+      </div>
+    );
+  }
+  return (
+    <ViewTransition name={photoTransition(product.slug)} share="product-photo" default="none">
+      <div className={`tile-photo relative overflow-hidden bg-floor ${className}`}>
+        <Image src={product.image} alt="" fill sizes={sizes} priority={priority} quality={85} className={photoClass(product.imageFit)} />
+      </div>
+    </ViewTransition>
   );
 }
 
@@ -87,7 +93,7 @@ export function ProductTile({
             aria-hidden
             className="ml-auto grid size-11 shrink-0 place-items-center rounded-full border border-line text-ink transition-[background-color,border-color,color] duration-200 group-hover:border-ink group-hover:bg-ink group-hover:text-paper"
           >
-            <ArrowRight className="size-[1.1rem]" />
+            <ArrowRight className="size-[1.1rem] transition-transform duration-300 ease-out-strong group-hover:-rotate-45" />
           </span>
         </div>
       </div>

@@ -14,7 +14,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
   return (
     <section aria-labelledby="fitting-title" className="bg-paper">
       <div className={`${container} py-16 sm:py-20 lg:py-28`}>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+        <div data-reveal className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
           <h2
             id="fitting-title"
             className="font-display max-w-[14ch] text-[2.2rem] leading-[0.95] uppercase sm:text-[3.2rem] lg:text-[4rem]"
@@ -26,7 +26,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
 
         <ol className="mt-14 grid gap-12 sm:mt-16 lg:grid-cols-3 lg:gap-10">
           {dict.fitting.steps.map((step, i) => (
-            <li key={step.title} className="relative">
+            <li key={step.title} data-reveal className="relative">
               {/* Left foot on the upper track, right foot half a stride ahead below it: walking right. */}
               <div aria-hidden className="relative h-24 w-48 text-ink">
                 <Bootprint left className="footstep absolute -top-7 left-[34px] h-[6.5rem] w-auto rotate-90" />
@@ -44,7 +44,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
         </ol>
 
         <div className="mt-16 grid gap-4 lg:mt-24 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
-          <div className="on-orange flex flex-col justify-between gap-8 bg-orange p-6 text-ink sm:p-10">
+          <div data-reveal className="on-orange flex flex-col justify-between gap-8 bg-orange p-6 text-ink sm:p-10">
             <div>
               <h3 className="font-display text-[1.6rem] leading-tight uppercase sm:text-[2.1rem]">
                 {dict.fitting.bulkTitle}
@@ -56,7 +56,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
               {dict.whatsapp.quote}
             </a>
           </div>
-          <div className="flex flex-col justify-between gap-8 bg-ink p-6 text-paper sm:p-10">
+          <div data-reveal className="flex flex-col justify-between gap-8 bg-ink p-6 text-paper sm:p-10">
             <div>
               <h3 className="text-[1.35rem] leading-snug font-semibold sm:text-2xl">{dict.fitting.consultTitle}</h3>
               <p className="mt-4 max-w-[40ch] leading-relaxed text-paper/70">{dict.fitting.consultBody}</p>

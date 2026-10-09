@@ -12,3 +12,6 @@ export function photoClass(fit: Product["imageFit"], { tagged = true } = {}) {
 /** The product code, as a small paper tag over the top-left of the art. */
 export const codeTag =
   "font-display tabular pointer-events-none absolute z-10 rounded-sm bg-paper px-2 py-1 leading-none text-ink";
+
+/** Shared by a tile's photo and the product page's main photo, so one morphs into the other. */
+export const photoTransition = (slug: string) => `photo-${slug}`;

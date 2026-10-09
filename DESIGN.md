@@ -101,9 +101,9 @@ components:
     backgroundColor: "{colors.orange}"
     textColor: "{colors.ink}"
     height: "72px"
-  sample-tag:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+  code-tag:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.tag}"
     padding: "4px 8px"
 ---
@@ -119,6 +119,14 @@ The website is the shop that Klang Valley workers have already driven past. Ever
 The system is flat, loud where the sign is loud, and quiet where people read. Big fields of black and orange carry the identity. The floor stays white or a warm off-white so products and copy read clearly. Signage furniture does real jobs: the category board on the sign is navigation, the MASUK plaque is the way into the catalogue, the store directory is the category index, and each branch card is headed by its own small signboard.
 
 Motion is a single idea, "setiap langkah" (every step). Boot-sole prints step in, one at a time, as the visitor scrolls: across the three fitting steps, and down the shop floor beside the shop window. When reduced motion is on, or scroll timelines are unsupported, the prints are simply there.
+
+Around that idea sits a quiet supporting layer, all on the 0.23/1/0.32/1 strong ease-out:
+- **Signboard lights up:** on load the lockup, the promise, the category board and the legal strip rise 14px into place, 140ms apart.
+- **Stock set out on the shelf:** sections, directory rows, brand rows, branch cards and product tiles marked `data-reveal` rise 22px as they first scroll into view, 70ms apart when several arrive together (`components/scroll-reveal.tsx`). Anything already on screen at load is never held back.
+- **Hover:** tile photos ease up to 104.5% and the tile arrow turns to point up-right; directory and brand names step 6–8px right; nav links draw a white underline from the left.
+- **Page changes:** a 160/260ms crossfade, and a product's photo travels from its tile into the product page (React `<ViewTransition>`, shared name `photo-<slug>`).
+- **Phone menu:** the sheet fades in, then each link rises in turn.
+With reduced motion on, all of this is off and content simply shows.
 
 **Key Characteristics:**
 - Black signboard faces on top, orange hazard band as the seam, white shop floor beneath.
@@ -201,7 +209,7 @@ The system is flat. Depth comes from field changes (black sign, then orange band
 
 - **Square sign faces:** signboards, product tiles, the MASUK plaque, the bulk and advice panels and the branch cards all have 0px corners.
 - **Pill controls:** every button, chip, search field, select and quantity stepper is fully rounded (9999px), with touch targets of at least 44px.
-- **Tags:** the Sample tag uses a 2px radius.
+- **Tags:** the product code tag and the Coming Soon tag use a 2px radius.
 - **Hazard stripes:** black bars leaning 13.3° off vertical, measured from the guideline. Each bar is 0.322 of the band height thick and repeats every 0.7 heights. In the tagline band they appear as three-bar groups at each end. In seams they run as a continuous strip 8px tall.
 - **Shield mark:** the logo's shield appears on its own only at small scale (branch signs, the favicon). The full lockup is never redrawn, only used from the vector paths in `components/brand/logo-paths.ts`.
 
@@ -221,9 +229,9 @@ Tactile, plain-spoken pills.
 
 ### Product Tile
 The catalogue's unit, built like a hang tag in a shop window.
-- **Structure:** a square-cornered white tile with a 1px Floor Line border. The top is a full-bleed art well in Shop Floor. The code sits in Moderniz at top-left, and a black SAMPLE tag sits top-right while listings are placeholders. Below come the name (Title), a meta line (brand · size range), a black WhatsApp pill, and a round arrow that marks the tile as a link.
+- **Structure:** a square-cornered white tile with a 1px Floor Line border. The top is a full-bleed art well in Shop Floor. The code sits in Moderniz on a small paper tag at top-left. Below come the name (Title), a meta line (brand · size range), a black WhatsApp pill, and a round arrow that marks the tile as a link.
 - **Behaviour:** the whole tile links to the product page. The WhatsApp button sits above that link and opens a pre-filled message. On hover the border turns black, the art well deepens, and the arrow fills black.
-- **Art:** a real product photo (`object-cover`) when one exists. Otherwise a flat black-and-orange safety pictogram stands in.
+- **Art:** a real product photo when one exists: studio shots fill the well (`object-cover`); cut-outs sit whole on it (`object-contain`, multiplied onto the floor), with room above for the code tag. Otherwise a flat black-and-orange safety pictogram stands in.
 
 ### Inputs / Fields
 - **Style:** white pill, 44px tall, with a 1px Floor Line border that darkens to black on hover. Placeholders are in Muted Ink, with a leading search icon. The caret is orange.
@@ -247,7 +255,7 @@ Inner pages use a slim version: the compact lockup, the nav, and an 8px hazard s
 The full-width orange band with three-bar hazard groups at both ends and "MELINDUNGI SETIAP LANGKAH" in black Moderniz. Its text is sized from the room left between the stripe groups, so it never clips. It sits under the hero and opens the footer.
 
 ### MASUK Plaque (signature)
-An orange door plaque leading into the catalogue: "MASUK" in Moderniz with the arrowhead from the shop's metal sign, plus a translated line ("Step inside: browse all 21 products"). It uses a container query so MASUK always fits. On hover the arrow nudges right and a hazard strip wipes in along the bottom edge.
+An orange door plaque leading into the catalogue: "MASUK" in Moderniz with the arrowhead from the shop's metal sign, plus a translated line ("Step inside: browse all 134 products", counted from the catalogue). It uses a container query so MASUK always fits. On hover the arrow nudges right and a hazard strip wipes in along the bottom edge.
 
 ### Store Directory
 A black board with one row per section: a white pictogram, the section name in Moderniz, a one-line description, and a product count. On hover the whole row lights orange with black text.
@@ -268,7 +276,7 @@ Boot-sole prints with chevron tread, drawn as one even-odd SVG path. Feet fall o
 - **Do** set section titles and sign labels in uppercase Moderniz, and everything people read in Poppins.
 - **Do** put black text on orange, and keep orange to whole fields (band, plaque, panels, lit directory rows).
 - **Do** give every product a WhatsApp action that pre-fills the product name, code, choices and page link.
-- **Do** keep the SAMPLE tag on any listing that is still a placeholder, and remove it only when a real product and photo replace it.
+- **Do** keep motion supporting, never blocking: nothing waits on an animation to be read or tapped, and reduced motion turns it all off.
 - **Do** keep touch targets at 44px or more, and keep the floating WhatsApp button clear of content on phones.
 
 ### Don't:

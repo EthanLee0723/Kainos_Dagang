@@ -141,3 +141,108 @@
     }
   }
 }
+
+/*
+ * Motion layer. Everything here is decoration on top of a page that already
+ * works without it: with reduced motion on, or without the browser feature,
+ * content simply shows.
+ */
+
+/* Signboard lights up on load: lockup, promise, then the category board. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 700ms var(--ease-out-strong) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+
+  .whatsapp-float {
+    animation: pop-in 500ms var(--ease-out-strong) 900ms both;
+  }
+
+  /* Gallery: each newly chosen photo fades up in place. */
+  .photo-swap {
+    animation: fade-in 320ms var(--ease-out-strong) both;
+  }
+
+  /* Phone menu: the black sheet drops in, then the links follow one by one. */
+  dialog.menu-sheet[open] {
+    animation: fade-in 220ms var(--ease-out-strong) both;
+  }
+
+  dialog.menu-sheet[open] .menu-item {
+    animation: rise 480ms var(--ease-out-strong) both;
+    animation-delay: calc(80ms + var(--i, 0) * 55ms);
+  }
+}
+
+/* Tile photos ease in a little on hover; cut-outs and studio shots alike. */
+.tile-photo img {
+  transition: transform 600ms var(--ease-out-strong);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .group:hover .tile-photo img {
+    transform: scale(1.045);
+  }
+}
+
+/*
+ * Page changes: a short crossfade, and a product photo that travels from its
+ * tile into the product page (see ProductArt / ProductGallery).
+ */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(root) {
+  animation: 160ms ease-in both fade-in reverse;
+}
+
+::view-transition-new(root) {
+  animation: 260ms var(--ease-out-strong) both fade-in;
+}
+
+::view-transition-group(.product-photo) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
