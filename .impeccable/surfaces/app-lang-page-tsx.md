@@ -9,7 +9,7 @@ related_targets: ["app/[lang]/products/page.tsx","app/[lang]/products/[slug]/pag
 
 Scope: `app/[lang]/page.tsx` (home), `app/[lang]/products` (catalogue), `app/[lang]/products/[slug]` (product detail). Visitor mode: Persuade.
 
-Audience: B2B buyers (contractors, factories, site supervisors) and individual workers in the Klang Valley. Job: find the right safety gear and ask about it. Action: WhatsApp a specific product (pre-filled with name, code, size, qty and link) or visit one of three branches. Proof: real signboard identity, three real branches with addresses, company registration, brands stocked (Black Hammer, Kickers). Constraints: no prices, no "authorised dealer" claim, sample products until the real list arrives, EN/BM/ZH.
+Audience: B2B buyers (contractors, factories, site supervisors) and individual workers in the Klang Valley. Job: find the right safety gear and ask about it. Action: WhatsApp a specific product (pre-filled with name, code, size, qty and link) or visit one of three branches. Proof: real signboard identity, three real branches with addresses, company registration, brands stocked (Black Hammer, Kickers Safety). Constraints: no prices, no "authorised dealer" claim, sample products until the real list arrives, EN/BM/ZH.
 
 Memorable moment: the site opens as the shop's own black signboard, and footsteps lead the visitor in.
 

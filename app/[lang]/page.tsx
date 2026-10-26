@@ -7,36 +7,39 @@ import { Fitting } from "@/components/home/fitting";
 import { ShopWindow } from "@/components/home/shop-window";
 import { SignboardHero } from "@/components/home/signboard-hero";
 import type { Metadata } from "next";
-import { openingHoursSchema } from "@/lib/hours";
+import { JsonLd } from "@/components/json-ld";
 import { alternatesFor } from "@/lib/i18n/alternates";
+import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
-import { branchAddress, branches, company, siteUrl } from "@/lib/site";
+import { absoluteUrl, graph, schemaId, storeSchema } from "@/lib/seo";
+import { branches } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { alternates: alternatesFor(await getLocale()) };
+  const locale = await getLocale();
+  const dict = await getDictionary(locale);
+  return {
+    alternates: alternatesFor(locale),
+    openGraph: openGraphFor(locale, dict.meta.title, dict.meta.description),
+  };
 }
 
 export default async function HomePage() {
   const locale = await getLocale();
   const dict = await getDictionary(locale);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: company.legalName,
-    alternateName: company.name,
-    url: `${siteUrl}/${locale}`,
-    email: company.email,
-    telephone: company.phoneE164,
-    slogan: dict.tagline,
-    department: branches.map((b) => ({
-      "@type": "Store",
-      name: `${company.name} ${b.name}`,
-      telephone: b.phoneE164,
-      address: { "@type": "PostalAddress", streetAddress: branchAddress(b), addressCountry: "MY" },
-      openingHoursSpecification: openingHoursSchema(),
-    })),
-  };
+  // The Organization and WebSite nodes come from the layout; the home page adds the shops.
+  const jsonLd = graph(
+    {
+      "@type": "WebPage",
+      "@id": absoluteUrl(`/${locale}`),
+      url: absoluteUrl(`/${locale}`),
+      name: dict.meta.title,
+      description: dict.meta.description,
+      isPartOf: { "@id": schemaId.website },
+      about: { "@id": schemaId.organization },
+    },
+    ...branches.map((b) => storeSchema(b, locale)),
+  );
 
   return (
     <>
@@ -50,10 +53,7 @@ export default async function HomePage() {
         <Branches dict={dict} locale={locale} />
         <Closing dict={dict} locale={locale} />
       </main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

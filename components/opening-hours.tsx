@@ -17,52 +17,45 @@ function malaysianWeekday() {
 }
 
 /**
- * The shop-door hours plate. Today's row lights orange once the page is in the
- * browser; the static HTML shows the plain plate, so nothing shifts on load.
+ * A branch's hours, shown inside its card. Today's row lights orange once the
+ * page is in the browser; the static HTML shows plain rows, so nothing shifts on load.
  */
-export function OpeningHoursPlate({
+export function BranchHours({
   rows,
   title,
-  scope,
   todayLabel,
 }: {
   rows: HoursRow[];
   title: string;
-  scope: string;
   todayLabel: string;
 }) {
   const today = useSyncExternalStore(subscribe, malaysianWeekday, () => -1);
 
   return (
-    <div className="mt-5 grid bg-ink text-paper lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
-      <div className="flex items-center gap-4 border-b border-ink-line px-5 py-5 sm:px-6 lg:border-r lg:border-b-0">
-        <Clock className="size-6 shrink-0 text-paper/60" strokeWidth={2} aria-hidden />
-        <div>
-          <h3 className="font-display text-[1.2rem] leading-none uppercase sm:text-[1.35rem]">{title}</h3>
-          <p className="mt-2 text-sm text-paper/60">{scope}</p>
-        </div>
-      </div>
-      <dl className="grid sm:grid-cols-3">
-        {rows.map((row, i) => {
+    <div className="mt-5 border-t border-line pt-4">
+      <h4 className="flex items-center gap-2 text-sm font-semibold">
+        <Clock className="size-4 text-muted" strokeWidth={2} aria-hidden />
+        {title}
+      </h4>
+      <dl className="mt-2 text-[0.95rem]">
+        {rows.map((row) => {
           const isToday = row.days.includes(today);
           return (
             <div
               key={row.label}
-              className={`px-5 py-4 transition-colors duration-300 sm:px-6 sm:py-5 ${
-                i < rows.length - 1 ? "border-b border-ink-line sm:border-r sm:border-b-0" : ""
-              } ${isToday ? "on-orange bg-orange text-ink" : ""}`}
+              className={`-mx-2 flex flex-wrap items-baseline justify-between gap-x-4 px-2 py-1.5 transition-colors duration-300 ${
+                isToday ? "on-orange bg-orange text-ink" : ""
+              }`}
             >
-              <dt className={`flex flex-wrap items-center gap-2 text-sm ${isToday ? "text-ink/80" : "text-paper/65"}`}>
+              <dt className={`flex items-center gap-2 ${isToday ? "text-ink/80" : "text-muted"}`}>
                 {row.label}
                 {isToday && (
-                  <span className="rounded-sm bg-ink px-1.5 py-0.5 text-[0.72rem] font-semibold tracking-wider text-paper uppercase">
+                  <span className="rounded-sm bg-ink px-1.5 py-0.5 text-[0.68rem] font-semibold tracking-wider text-paper uppercase">
                     {todayLabel}
                   </span>
                 )}
               </dt>
-              <dd className="tabular mt-1 text-[1.05rem] font-semibold sm:mt-1.5 sm:text-lg">
-                {row.time}
-              </dd>
+              <dd className="tabular font-semibold">{row.time}</dd>
             </div>
           );
         })}

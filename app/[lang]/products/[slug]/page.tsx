@@ -7,12 +7,14 @@ import { codeTag } from "@/components/photo-class";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductArt, ProductTile } from "@/components/product-tile";
 import { SiteHeader } from "@/components/site-header";
+import { JsonLd } from "@/components/json-ld";
 import { container } from "@/components/ui";
 import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
 import { getCategory, getProduct, products, relatedProducts } from "@/lib/products";
-import { branches, pick, siteUrl } from "@/lib/site";
+import { breadcrumbSchema, graph, productSchema } from "@/lib/seo";
+import { branches, pick } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -31,7 +33,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/products/[
     title,
     description,
     alternates: alternatesFor(locale, `/products/${slug}`),
-    openGraph: openGraphFor(locale, `${title} | Kainos Dagang`, description),
+    openGraph: openGraphFor(locale, `${title} | Kainos Dagang`, description, `/products/${slug}`),
   };
 }
 
@@ -50,17 +52,14 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
     prefix: /^(UK|EU)\b/.test(product.sizes.label.en) ? `${product.sizes.label.en.slice(0, 2)} ` : "",
   };
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name,
-    sku: product.code,
-    description: pick(product.description, locale),
-    category: pick(category.name, locale),
-    url: `${siteUrl}/${locale}/products/${product.slug}`,
-    ...(product.brand ? { brand: { "@type": "Brand", name: product.brand } } : {}),
-    ...(product.image ? { image: `${siteUrl}${product.image}` } : {}),
-  };
+  const jsonLd = graph(
+    productSchema(product, locale),
+    breadcrumbSchema([
+      { name: dict.nav.home, path: `/${locale}` },
+      { name: dict.product.backToProducts, path: `/${locale}/products` },
+      { name, path: `/${locale}/products/${product.slug}` },
+    ]),
+  );
 
   return (
     <>
@@ -212,10 +211,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
           </div>
         </section>
       </main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

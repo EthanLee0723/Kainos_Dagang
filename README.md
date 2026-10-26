@@ -15,6 +15,7 @@ npm run start
 - **WhatsApp:** every WhatsApp button (the floating button and each product's button) opens a chat with the main line, **019-662 8919**. A product enquiry pre-fills the product name, code, chosen size, colour and quantity, plus a link to the product page. The number lives in `lib/site.ts` (`company.whatsappNumber`); the message templates are in `lib/whatsapp.ts`.
 - **Branches, company details:** `lib/site.ts`.
 - **Products:** `lib/products.ts`.
+- **SEO:** `robots.txt`, `sitemap.xml` (with hreflang and product photos), the web manifest, `llms.txt` and schema.org structured data are all generated from the same data. See [`docs/SEO.md`](docs/SEO.md).
 
 ## Replacing the sample products
 
@@ -28,7 +29,8 @@ Set `featured: true` on the eight products to show in the home page's shop windo
 
 ## Before going live
 
-- Set `NEXT_PUBLIC_SITE_URL` to the real domain (e.g. `https://www.kainosdagang.com`) so link previews and SEO tags use absolute URLs. WhatsApp product links already use whatever domain the visitor is on.
+- Set `NEXT_PUBLIC_SITE_URL` to the real domain (e.g. `https://www.kainosdagang.com`) so link previews and SEO tags use absolute URLs. **Search engines are told not to index the site until it is set.** WhatsApp product links already use whatever domain the visitor is on. All environment variables are listed in `.env.example`.
+- Verify the site in Google Search Console and Bing Webmaster Tools, submit the sitemap, and set up a Google Business Profile per branch: step by step in [`docs/SEO.md`](docs/SEO.md).
 - The headings use the brand's **Moderniz** font (`app/fonts/Moderniz.otf`), which the client confirmed is licensed for web use. Keep proof of that licence.
 
 ## Design

@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_SC, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { JsonLd } from "@/components/json-ld";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { htmlLang, locales } from "@/lib/i18n/config";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
-import { siteUrl } from "@/lib/site";
+import { graph, keywords, organizationSchema, robotsMeta, siteVerification, websiteSchema } from "@/lib/seo";
+import { company, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 // Primary display face from the brand guideline (licensed for web use, per the client).
@@ -51,7 +53,22 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(siteUrl),
     title: { default: dict.meta.title, template: `%s | Kainos Dagang` },
     description: dict.meta.description,
+    applicationName: company.name,
+    authors: [{ name: company.legalName, url: `${siteUrl}/${locale}` }],
+    creator: company.legalName,
+    publisher: company.legalName,
+    keywords: keywords[locale],
+    category: "shopping",
+    robots: robotsMeta(),
+    verification: siteVerification(),
     openGraph: openGraphFor(locale, dict.meta.title, dict.meta.description),
+    // X/Twitter falls back to the og: title, description and image for the rest.
+    twitter: { card: "summary_large_image" },
+    other: {
+      // Local search hints read by Bing and some regional engines.
+      "geo.region": "MY-10",
+      "geo.placename": "Selangor",
+    },
   };
 }
 
@@ -76,6 +93,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <SiteFooter dict={dict} locale={locale} />
         <WhatsAppFloat locale={locale} label={dict.whatsapp.float} />
         <ScrollReveal />
+        <JsonLd data={graph(organizationSchema(locale, dict.tagline), websiteSchema(dict.meta.description))} />
       </body>
     </html>
   );

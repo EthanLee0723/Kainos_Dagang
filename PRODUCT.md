@@ -19,7 +19,7 @@ A company and catalogue site for Kainos Dagang, a Malaysian seller of safety equ
 
 ## Positioning
 
-- **Branded safety gear, in store, with expert fitting and advice.** Stocks established safety brands (Black Hammer, Kickers, and others), and staff help customers choose the right safety rating, size, and fit. A plain online marketplace listing cannot offer that.
+- **Branded safety gear, in store, with expert fitting and advice.** Stocks established safety brands (Black Hammer, Kickers Safety, and others), and staff help customers choose the right safety rating, size, and fit. A plain online marketplace listing cannot offer that.
 - The shops present themselves as a **"Kedai Kasut"** (shoe shop) and a **"Black Hammer Safety Shoes Outlet"** on their own signage. Safety footwear is the core.
 - **Do not claim "authorised dealer"** for any brand (user decision, 2026-10-06). List brands as brands stocked.
 
@@ -28,9 +28,13 @@ A company and catalogue site for Kainos Dagang, a Malaysian seller of safety equ
 - Enquiries and orders happen over **WhatsApp** (click-to-chat), not on the site. Every WhatsApp button (the floating button and each product's button) goes to the main line, **019-662 8919**. A product enquiry pre-fills the product name, code, and a link to its page.
 - Customers can **visit a physical branch**. There are three:
   - **Taman Equine**: No.6-1, Jalan Equine 10D, Taman Equine, 43300 Seri Kembangan. Tel 017-665 8919. This is also the HQ address on the letterhead.
-  - **Kota Damansara**: No.49-1, Jalan Cecawi 6/19A, 47810 Kota Damansara, Selangor. Tel 017-891 9550.
+  - **Kota Damansara**: 49-1, Jalan Cecawi 6/19a, Kota Damansara, 47810 Petaling Jaya, Selangor. Tel 017-891 9550.
   - **Klang**: No.16A, Jalan Kampar 1/KU 1, Bukit Kuda Heights, 41300 Klang, Selangor. Tel 017-363 8919.
-- **Opening hours** (from the client, 2026-10-06; shown as the same at all three branches): Monday 9am–6pm; Tuesday to Saturday 10am–6pm; Sunday 11am–5pm. Public-holiday hours are not known, so the site shows no live "open now" claim, only today's hours highlighted.
+- **Opening hours** (from the client, 2026-10-20; each branch card shows its own, `hours` per branch in `lib/site.ts`):
+  - Taman Equine (Seri Kembangan): Monday 9am–6pm; Tuesday to Saturday 10am–6pm; Sunday 11am–5pm.
+  - Kota Damansara and Klang: Monday to Saturday 10am–7pm; Sunday 10am–5pm.
+
+  Public-holiday hours are not known, so the site shows no live "open now" claim, only today's hours highlighted.
 - Company: **Kainos Dagang Sdn Bhd**, 202301009526 (1503447-K). Email samhong8919@gmail.com. Main line 019-662 8919.
 - **No prices are shown publicly.** All pricing, retail and bulk alike, goes through WhatsApp enquiry.
 - Trilingual audience: **English, Bahasa Melayu, Simplified Chinese**. The site opens in the visitor's browser language when it is one of the three, otherwise English. Visitors can switch.

@@ -3,11 +3,13 @@ import { Suspense } from "react";
 import { Catalogue, type CatalogueItem } from "@/components/catalogue";
 import { ProductTile } from "@/components/product-tile";
 import { SiteHeader } from "@/components/site-header";
+import { JsonLd } from "@/components/json-ld";
 import { container } from "@/components/ui";
 import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
 import { brands, categories, products, productsByBrand } from "@/lib/products";
+import { breadcrumbSchema, graph, productListSchema } from "@/lib/seo";
 import { pick } from "@/lib/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
 
@@ -18,7 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
     title: dict.meta.productsTitle,
     description: dict.meta.productsDescription,
     alternates: alternatesFor(locale, "/products"),
-    openGraph: openGraphFor(locale, `${dict.meta.productsTitle} | Kainos Dagang`, dict.meta.productsDescription),
+    openGraph: openGraphFor(
+      locale,
+      `${dict.meta.productsTitle} | Kainos Dagang`,
+      dict.meta.productsDescription,
+      "/products",
+    ),
   };
 }
 
@@ -39,6 +46,13 @@ export default async function ProductsPage() {
       .normalize("NFKD"),
   }));
   const productBrands = brands.filter((b) => productsByBrand(b.name).length > 0).map((b) => b.name);
+  const jsonLd = graph(
+    productListSchema(products, locale, dict.meta.productsTitle, dict.meta.productsDescription),
+    breadcrumbSchema([
+      { name: dict.nav.home, path: `/${locale}` },
+      { name: dict.meta.productsTitle, path: `/${locale}/products` },
+    ]),
+  );
 
   return (
     <>
@@ -87,6 +101,7 @@ export default async function ProductsPage() {
           </Suspense>
         </div>
       </main>
+      <JsonLd data={jsonLd} />
     </>
   );
 }

@@ -8,7 +8,7 @@
     "fit": "contain"
   },
   "bh-0993": {
-    "count": 1,
+    "count": 3,
     "fit": "contain"
   },
   "bh-1102rs": {
@@ -16,27 +16,27 @@
     "fit": "contain"
   },
   "bh-2331": {
-    "count": 1,
-    "fit": "cover"
+    "count": 3,
+    "fit": "contain"
   },
   "bh-2332": {
     "count": 1,
     "fit": "contain"
   },
   "bh-2333": {
-    "count": 1,
-    "fit": "cover"
+    "count": 4,
+    "fit": "contain"
   },
   "bh-2334": {
-    "count": 1,
-    "fit": "cover"
+    "count": 4,
+    "fit": "contain"
   },
   "bh-2335": {
     "count": 1,
     "fit": "contain"
   },
   "bh-2336": {
-    "count": 1,
+    "count": 3,
     "fit": "contain"
   },
   "bh-2607": {
@@ -60,8 +60,8 @@
     "fit": "contain"
   },
   "bh-2882": {
-    "count": 1,
-    "fit": "cover"
+    "count": 4,
+    "fit": "contain"
   },
   "bh-2885": {
     "count": 2,
@@ -76,11 +76,11 @@
     "fit": "contain"
   },
   "bh-3888": {
-    "count": 2,
+    "count": 4,
     "fit": "contain"
   },
   "bh-3889": {
-    "count": 2,
+    "count": 4,
     "fit": "contain"
   },
   "bh-4101": {
@@ -120,36 +120,36 @@
     "fit": "contain"
   },
   "bh-4658": {
-    "count": 1,
-    "fit": "cover"
+    "count": 5,
+    "fit": "contain"
   },
   "bh-4659": {
     "count": 1,
     "fit": "contain"
   },
   "bh-4660": {
-    "count": 1,
-    "fit": "cover"
+    "count": 5,
+    "fit": "contain"
   },
   "bh-4663": {
-    "count": 1,
-    "fit": "cover"
+    "count": 5,
+    "fit": "contain"
   },
   "bh-4664": {
-    "count": 1,
-    "fit": "cover"
+    "count": 5,
+    "fit": "contain"
   },
   "bh-4664-l": {
     "count": 1,
     "fit": "contain"
   },
   "bh-4665": {
-    "count": 1,
+    "count": 4,
     "fit": "contain"
   },
   "bh-4666": {
-    "count": 1,
-    "fit": "cover"
+    "count": 5,
+    "fit": "contain"
   },
   "bh-4671": {
     "count": 1,
@@ -176,7 +176,7 @@
     "fit": "contain"
   },
   "bh-4755": {
-    "count": 3,
+    "count": 6,
     "fit": "contain"
   },
   "bh-4881": {
@@ -192,12 +192,12 @@
     "fit": "contain"
   },
   "bh-4891": {
-    "count": 2,
-    "fit": "cover"
+    "count": 3,
+    "fit": "contain"
   },
   "bh-4892": {
-    "count": 3,
-    "fit": "cover"
+    "count": 6,
+    "fit": "contain"
   },
   "bh-4991": {
     "count": 1,
@@ -212,23 +212,23 @@
     "fit": "contain"
   },
   "bh-4994": {
-    "count": 1,
-    "fit": "cover"
+    "count": 3,
+    "fit": "contain"
   },
   "bh-8001": {
-    "count": 2,
+    "count": 8,
     "fit": "contain"
   },
   "bh-8002": {
-    "count": 2,
+    "count": 8,
     "fit": "contain"
   },
   "bh-8003": {
-    "count": 2,
+    "count": 9,
     "fit": "contain"
   },
   "bh-8004": {
-    "count": 2,
+    "count": 9,
     "fit": "contain"
   },
   "bh-ll-2": {
@@ -252,7 +252,7 @@
     "fit": "contain"
   },
   "bh0993-2-sp": {
-    "count": 2,
+    "count": 9,
     "fit": "contain"
   },
   "bh0993-779": {
@@ -260,15 +260,15 @@
     "fit": "contain"
   },
   "bh2-3890": {
-    "count": 1,
+    "count": 5,
     "fit": "contain"
   },
   "bh2-3891": {
-    "count": 1,
+    "count": 5,
     "fit": "contain"
   },
   "bh2-3892": {
-    "count": 1,
+    "count": 4,
     "fit": "contain"
   },
   "bh2016-008-b": {
@@ -292,15 +292,15 @@
     "fit": "contain"
   },
   "bhs-201604": {
-    "count": 2,
+    "count": 9,
     "fit": "contain"
   },
   "bhs-201610": {
-    "count": 1,
+    "count": 7,
     "fit": "contain"
   },
   "bhs-201611": {
-    "count": 1,
+    "count": 7,
     "fit": "contain"
   },
   "bhs-201612": {
@@ -308,19 +308,19 @@
     "fit": "contain"
   },
   "bhs-201622": {
-    "count": 2,
+    "count": 9,
     "fit": "contain"
   },
   "bhs-201628": {
-    "count": 1,
+    "count": 6,
     "fit": "contain"
   },
   "bhs-201629": {
-    "count": 1,
+    "count": 6,
     "fit": "contain"
   },
   "bhs-201630": {
-    "count": 1,
+    "count": 6,
     "fit": "contain"
   },
   "bhs-26618": {
@@ -332,19 +332,19 @@
     "fit": "contain"
   },
   "bhs22004": {
-    "count": 1,
+    "count": 4,
     "fit": "contain"
   },
   "bhs22004-b": {
-    "count": 1,
+    "count": 6,
     "fit": "contain"
   },
   "bhs22005": {
-    "count": 1,
+    "count": 7,
     "fit": "contain"
   },
   "bhs22006": {
-    "count": 1,
+    "count": 8,
     "fit": "contain"
   },
   "bhs26622": {
@@ -400,11 +400,11 @@
     "fit": "contain"
   },
   "ham-3002gk": {
-    "count": 3,
+    "count": 7,
     "fit": "contain"
   },
   "ham-3003gk": {
-    "count": 1,
+    "count": 5,
     "fit": "contain"
   },
   "ham-3004gk": {
@@ -412,7 +412,7 @@
     "fit": "contain"
   },
   "ham-3008gk": {
-    "count": 2,
+    "count": 8,
     "fit": "contain"
   },
   "ham-3010gk": {
@@ -448,19 +448,19 @@
     "fit": "contain"
   },
   "mesh-reflective-safety-vest": {
-    "count": 5,
+    "count": 6,
     "fit": "cover"
   },
   "msa-v-gard-helmet": {
-    "count": 6,
+    "count": 7,
     "fit": "contain"
   },
   "proguard-advanlite-2-helmet": {
-    "count": 7,
+    "count": 8,
     "fit": "cover"
   },
   "reflective-safety-vest-pockets": {
-    "count": 3,
+    "count": 4,
     "fit": "contain"
   },
   "sfc-8300-1-ht": {

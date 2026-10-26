@@ -54,18 +54,17 @@ export function SiteFooter({ dict, locale }: { dict: Dictionary; locale: Locale 
                 >
                   {b.phoneDisplay}
                 </a>
+                <dl aria-label={`${b.name}: ${dict.hours.title}`} className="mt-1.5 space-y-0.5 text-sm">
+                  {hoursRows(b.hours, locale, dict.hours).map((row) => (
+                    <div key={row.label} className="flex flex-wrap gap-x-2">
+                      <dt className="text-paper/55">{row.label}</dt>
+                      <dd className="tabular text-paper/85">{row.time}</dd>
+                    </div>
+                  ))}
+                </dl>
               </li>
             ))}
           </ul>
-          <h3 className="mt-8 text-[0.95rem] text-paper/55">{dict.hours.title}</h3>
-          <dl className="mt-2 space-y-2 text-[0.95rem]">
-            {hoursRows(locale, dict.hours).map((row) => (
-              <div key={row.label}>
-                <dt className="text-paper/75">{row.label}</dt>
-                <dd className="tabular font-semibold">{row.time}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
         <div>

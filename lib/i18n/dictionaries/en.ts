@@ -2,10 +2,10 @@ const en = {
   meta: {
     title: "Kainos Dagang | Safety Shoes & Safety Gear, Klang Valley",
     description:
-      "Safety shoes, boots, rain boots, kitchen clogs, helmets and reflective vests from Black Hammer, Kickers, Tanker Tec, MSA and more. Try them on at our shops in Taman Equine, Kota Damansara and Klang, or ask us on WhatsApp.",
+      "Safety shoes, boots, rain boots, kitchen clogs, helmets and reflective vests from Black Hammer, Kickers Safety, Tanker Tec, MSA and more. Try them on at our shops in Taman Equine, Kota Damansara and Klang, or ask us on WhatsApp.",
     productsTitle: "All products",
     productsDescription:
-      "Browse safety shoes, boots, kitchen footwear, helmets and reflective vests from Black Hammer, Kickers, Tanker Tec, MSA and more. Ask about any item on WhatsApp.",
+      "Browse safety shoes, boots, kitchen footwear, helmets and reflective vests from Black Hammer, Kickers Safety, Tanker Tec, MSA and more. Ask about any item on WhatsApp.",
   },
   nav: {
     home: "Home",
@@ -30,7 +30,7 @@ const en = {
   sign: {
     hookTitle: "Safety shoes and safety gear, fitted in store.",
     hookBody:
-      "Black Hammer, Kickers and more. Three shops in the Klang Valley. Ask us anything on WhatsApp.",
+      "Black Hammer, Kickers Safety and more. Three shops in the Klang Valley. Ask us anything on WhatsApp.",
     owner: "Owned by",
     directoryLabel: "Shop by category",
   },
@@ -52,7 +52,7 @@ const en = {
   },
   brands: {
     title: "Brands on our shelves",
-    body: "We stock established safety brands like Black Hammer, Kickers and MSA, with more in store.",
+    body: "We stock established safety brands like Black Hammer, Kickers Safety and MSA, with more in store.",
     comingSoon: "Coming soon",
     viewRange: "See the range",
     more: "More brands in store",
@@ -68,7 +68,7 @@ const en = {
         body: "Construction site, factory floor, kitchen or plantation: what you stand on decides what you need.",
       },
       {
-        title: "Try a few sizes",
+        title: "Try them on",
         body: "Every foot is different, and so is every brand. Try on a few pairs with your work socks on.",
       },
       {
@@ -95,7 +95,7 @@ const en = {
   },
   hours: {
     title: "Opening hours",
-    scope: "Same hours at all three branches",
+    closed: "Closed",
     today: "Today",
     days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     through: " – ",

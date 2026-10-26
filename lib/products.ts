@@ -80,7 +80,7 @@ export const categories: Category[] = [
     name: { en: "Safety Shoes", ms: "Kasut Keselamatan", zh: "安全鞋" },
     blurb: {
       en: "Low-cut lace-ups, slip-ons and sporty safety trainers.",
-      ms: "Kasut bertali potongan rendah, tanpa tali dan kasut sukan keselamatan.",
+      ms: "Kasut potongan rendah, sama ada bertali, tanpa tali atau gaya sukan.",
       zh: "低帮系带、一脚蹬和运动款安全鞋。",
     },
   },
@@ -90,7 +90,7 @@ export const categories: Category[] = [
     name: { en: "Safety Boots", ms: "But Keselamatan", zh: "安全靴" },
     blurb: {
       en: "Mid and high-cut boots, laced, zipped or pull-on, plus waterproof rain boots.",
-      ms: "But potongan sederhana dan tinggi, bertali, berzip atau sarung, serta but hujan kalis air.",
+      ms: "But potongan sederhana dan tinggi, sama ada bertali, berzip atau jenis sarung, termasuk but hujan kalis air.",
       zh: "中帮、高帮安全靴，系带、拉链或套穿，以及防水雨靴。",
     },
   },
@@ -100,7 +100,7 @@ export const categories: Category[] = [
     name: { en: "Kitchen & Hospitality", ms: "Dapur & Hospitaliti", zh: "厨房与餐饮鞋" },
     blurb: {
       en: "Slip-resistant clogs and kitchen shoes for wet, greasy floors.",
-      ms: "Klog dan kasut dapur kalis gelincir untuk lantai basah dan berminyak.",
+      ms: "Klog dan kasut dapur yang tidak licin di lantai basah dan berminyak.",
       zh: "防滑洞洞鞋和厨房鞋，适合湿滑油腻的地面。",
     },
   },
@@ -110,8 +110,8 @@ export const categories: Category[] = [
     name: { en: "Safety Helmets", ms: "Topi Keselamatan", zh: "安全帽" },
     blurb: {
       en: "Hard hats in site colours, with ratchet adjustment.",
-      ms: "Topi keledar pelbagai warna tapak, dengan pelaras ratchet.",
-      zh: "多种工地颜色，旋钮调节。",
+      ms: "Topi keselamatan dalam pelbagai warna, dengan pelaras ratchet.",
+      zh: "多种颜色可选，旋钮调节松紧。",
     },
   },
   {
@@ -120,8 +120,8 @@ export const categories: Category[] = [
     name: { en: "Safety Vests", ms: "Vest Keselamatan", zh: "反光背心" },
     blurb: {
       en: "Reflective vests so you are seen on site and on the road.",
-      ms: "Vest pemantul cahaya supaya anda kelihatan di tapak dan jalan raya.",
-      zh: "反光背心，让你在工地和道路上更醒目。",
+      ms: "Vest reflektif supaya anda mudah dilihat di tapak kerja dan di jalan raya.",
+      zh: "反光背心，在工地和路边作业时更醒目、更安全。",
     },
   },
 ];
@@ -146,10 +146,10 @@ export type Brand = {
 /** Brands stocked. Shown as brands stocked, never as "authorised". */
 export const brands: Brand[] = [
   { name: "Black Hammer", note: { en: "Safety shoes, boots, rain boots and kitchen clogs", ms: "Kasut, but, but hujan dan klog dapur keselamatan", zh: "安全鞋、安全靴、雨靴和厨房洞洞鞋" } },
-  { name: "Kickers", note: { en: "Leather safety boots and safety trainers", ms: "But keselamatan kulit dan kasut sukan keselamatan", zh: "真皮安全靴和安全运动鞋" } },
+  { name: "Kickers Safety", note: { en: "Leather safety boots and safety trainers", ms: "But keselamatan kulit dan kasut sukan keselamatan", zh: "真皮安全靴和安全运动鞋" } },
   { name: "Tanker Tec", note: { en: "Metal-free ESD safety footwear", ms: "Kasut keselamatan ESD bebas logam", zh: "无金属 ESD 安全鞋" } },
   { name: "Hammerland", note: { en: "Value safety shoes and boots", ms: "Kasut dan but keselamatan berpatutan", zh: "高性价比安全鞋和安全靴" } },
-  { name: "Toelect", note: { en: "Safety shoes and sporty safety trainers", ms: "Kasut keselamatan dan kasut sukan keselamatan", zh: "安全鞋和运动款安全鞋" } },
+  { name: "To Tect", note: { en: "Safety shoes and sporty safety trainers", ms: "Kasut keselamatan dan kasut sukan keselamatan", zh: "安全鞋和运动款安全鞋" } },
   { name: "Safex", note: { en: "Kitchen and hospitality footwear", ms: "Kasut dapur dan hospitaliti", zh: "厨房与餐饮鞋" } },
   { name: "MSA", note: { en: "Safety helmets", ms: "Topi keselamatan", zh: "安全帽" } },
   { name: "Proguard", note: { en: "Safety helmets", ms: "Topi keselamatan", zh: "安全帽" } },

@@ -28,7 +28,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
           {dict.fitting.steps.map((step, i) => (
             <li key={step.title} data-reveal className="relative">
               {/* Left foot on the upper track, right foot half a stride ahead below it: walking right. */}
-              <div aria-hidden className="relative h-24 w-48 text-ink">
+              <div aria-hidden className="relative h-24 w-48 text-orange">
                 <Bootprint left className="footstep absolute -top-7 left-[34px] h-[6.5rem] w-auto rotate-90" />
                 <Bootprint
                   className="footstep absolute top-[22px] left-[106px] h-[6.5rem] w-auto rotate-90 [animation-range:entry_25%_entry_85%]"

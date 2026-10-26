@@ -1,6 +1,6 @@
 import { MapPin, Navigation, Phone } from "lucide-react";
 import { LogoMark } from "@/components/brand/logo";
-import { OpeningHoursPlate } from "@/components/opening-hours";
+import { BranchHours } from "@/components/opening-hours";
 import { button, container } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
@@ -46,6 +46,11 @@ export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale })
                   <Phone className="size-[1.1rem] text-muted" aria-hidden />
                   {branch.phoneDisplay}
                 </a>
+                <BranchHours
+                  rows={hoursRows(branch.hours, locale, dict.hours)}
+                  title={dict.hours.title}
+                  todayLabel={dict.hours.today}
+                />
                 <div className="mt-auto flex flex-wrap gap-2 pt-6">
                   <a href={googleMapsUrl(branch)} target="_blank" rel="noopener" className={button.outline}>
                     <MapPin className="size-4" aria-hidden />
@@ -64,14 +69,6 @@ export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale })
             </li>
           ))}
         </ul>
-        <div data-reveal>
-          <OpeningHoursPlate
-          rows={hoursRows(locale, dict.hours)}
-          title={dict.hours.title}
-          scope={dict.hours.scope}
-            todayLabel={dict.hours.today}
-          />
-        </div>
       </div>
     </section>
   );

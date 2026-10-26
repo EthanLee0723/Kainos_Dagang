@@ -7,14 +7,14 @@ export function whatsappUrl(message: string) {
 
 const generalMessage: Record<Locale, string> = {
   en: "Hi Kainos Dagang, I'd like to ask about your safety products.",
-  ms: "Hai Kainos Dagang, saya ingin bertanya tentang produk keselamatan anda.",
-  zh: "您好 Kainos Dagang，我想咨询你们的安全用品。",
+  ms: "Hai Kainos Dagang, saya nak tanya tentang produk keselamatan yang ada.",
+  zh: "您好 Kainos Dagang，我想询问一下你们的安全用品。",
 };
 
 const quoteMessage: Record<Locale, string> = {
   en: "Hi Kainos Dagang, I'd like a quotation for a bulk order of safety gear for my company.",
-  ms: "Hai Kainos Dagang, saya ingin mendapatkan sebut harga untuk tempahan pukal peralatan keselamatan bagi syarikat saya.",
-  zh: "您好 Kainos Dagang，我想为公司批量采购安全用品，请提供报价。",
+  ms: "Hai Kainos Dagang, saya nak minta sebut harga untuk tempahan pukal peralatan keselamatan bagi syarikat saya.",
+  zh: "您好 Kainos Dagang，我们公司想批量采购安全用品，麻烦提供报价，谢谢。",
 };
 
 export function generalEnquiryUrl(locale: Locale) {
@@ -43,7 +43,7 @@ const productCopy: Record<
     size: "Saiz",
     colour: "Warna",
     qty: "Kuantiti",
-    ask: "Adakah stok tersedia?",
+    ask: "Ada stok tak?",
   },
   zh: {
     intro: "您好 Kainos Dagang，我对这款产品感兴趣：",
