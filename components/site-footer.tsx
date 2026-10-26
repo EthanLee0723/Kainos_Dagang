@@ -2,14 +2,16 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { hoursRows } from "@/lib/hours";
-import { categories } from "@/lib/products";
-import { branches, company, pick } from "@/lib/site";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { getSite } from "@/lib/data/site";
+import { pick } from "@/lib/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
 import { LogoLockup } from "./brand/logo";
 import { TaglineBand } from "./brand/tagline-band";
 import { LanguageSwitcher } from "./language-switcher";
 
-export function SiteFooter({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function SiteFooter({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const [{ categories }, { company, branches }] = await Promise.all([getCatalogue(), getSite()]);
   const year = new Date().getFullYear();
   return (
     <footer id="contact" className="scroll-mt-4 bg-ink text-paper">
@@ -74,7 +76,7 @@ export function SiteFooter({ dict, locale }: { dict: Dictionary; locale: Locale 
               <dt className="text-paper/55">{dict.branchesSection.mainLine}</dt>
               <dd>
                 <a
-                  href={generalEnquiryUrl(locale)}
+                  href={generalEnquiryUrl(locale, company.whatsappNumber)}
                   target="_blank"
                   rel="noopener"
                   className="tabular font-semibold transition-colors hover:text-orange"

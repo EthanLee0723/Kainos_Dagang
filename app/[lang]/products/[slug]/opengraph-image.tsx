@@ -1,4 +1,5 @@
 import { ogCard, ogSize } from "@/lib/og";
+import { getCatalogue } from "@/lib/data/catalogue";
 import { getProduct } from "@/lib/products";
 
 export const alt = "Kainos Dagang product";
@@ -7,7 +8,7 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ lang: string; slug: string }> }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = getProduct(await getCatalogue(), slug);
   if (!product) return ogCard({});
   return ogCard({
     title: product.name.en,

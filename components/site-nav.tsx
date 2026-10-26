@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
-import { company } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileNav } from "./mobile-nav";
@@ -17,7 +17,7 @@ export function navItems(dict: Dictionary, locale: Locale) {
 }
 
 /** The row of links set along the top edge of the signboard. */
-export function NavRow({
+export async function NavRow({
   dict,
   locale,
   brand,
@@ -28,6 +28,8 @@ export function NavRow({
   brand?: React.ReactNode;
 }) {
   const items = navItems(dict, locale);
+  const { company } = await getSite();
+  const whatsappHref = generalEnquiryUrl(locale, company.whatsappNumber);
   return (
     <div className="flex h-16 items-center gap-4 sm:h-20 lg:gap-8">
       {brand}
@@ -48,7 +50,7 @@ export function NavRow({
       <div className="ml-auto flex items-center gap-2 sm:gap-4">
         <LanguageSwitcher current={locale} label={dict.nav.language} className="hidden text-paper sm:block" />
         <a
-          href={generalEnquiryUrl(locale)}
+          href={whatsappHref}
           target="_blank"
           rel="noopener"
           className="hidden h-11 items-center gap-2.5 rounded-full border border-paper/25 pr-4 pl-3 text-[0.9rem] font-medium text-paper transition-colors duration-150 hover:border-paper/60 md:inline-flex"
@@ -65,7 +67,7 @@ export function NavRow({
             language: dict.nav.language,
             whatsapp: dict.whatsapp.cta,
           }}
-          whatsappHref={generalEnquiryUrl(locale)}
+          whatsappHref={whatsappHref}
         />
       </div>
     </div>

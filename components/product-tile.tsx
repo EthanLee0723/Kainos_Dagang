@@ -5,9 +5,10 @@ import { ViewTransition } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { format } from "@/lib/i18n/format";
+import { getSite } from "@/lib/data/site";
 import { type Product, sizeSummary } from "@/lib/products";
 import { pick } from "@/lib/site";
-import { codeTag, photoClass, photoTransition } from "./photo-class";
+import { codeTag, photoClass, photoTransition, tagBadge } from "./photo-class";
 import { Pictogram } from "./pictogram";
 import { ProductWhatsAppLink } from "./product-whatsapp-link";
 import { WhatsAppIcon } from "./whatsapp-icon";
@@ -40,7 +41,7 @@ export function ProductArt({
   );
 }
 
-export function ProductTile({
+export async function ProductTile({
   product,
   locale,
   dict,
@@ -58,6 +59,7 @@ export function ProductTile({
   const Heading = headingLevel;
   const meta = [product.brand, sizeSummary(product, locale)].filter(Boolean).join(" · ");
   const href = `/${locale}/products/${product.slug}`;
+  const { company } = await getSite();
 
   return (
     <article className="group relative flex w-full flex-col border border-line bg-paper transition-colors duration-200 hover:border-ink">
@@ -69,6 +71,15 @@ export function ProductTile({
           className="aspect-[16/10] transition-colors duration-200 group-hover:bg-floor-2 group-hover:[--pict-bg:var(--color-floor-2)] sm:aspect-[4/3]"
         />
         <span className={`${codeTag} top-2.5 left-2.5 text-[0.72rem]`}>{product.code}</span>
+        {product.tags.length > 0 && (
+          <ul className="pointer-events-none absolute top-2.5 right-2.5 z-10 flex max-w-[60%] flex-wrap justify-end gap-1">
+            {product.tags.slice(0, 2).map((tag) => (
+              <li key={tag.id} className={tagBadge}>
+                {pick(tag.name, locale)}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <Heading className="text-[1.02rem] leading-snug font-semibold">
@@ -80,6 +91,7 @@ export function ProductTile({
         <div className="mt-auto flex items-center gap-3 pt-5">
           <ProductWhatsAppLink
             locale={locale}
+            whatsappNumber={company.whatsappNumber}
             name={name}
             code={product.code}
             slug={product.slug}

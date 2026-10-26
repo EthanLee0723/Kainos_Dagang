@@ -4,7 +4,6 @@ import { Minus, Phone, Plus } from "lucide-react";
 import { useId, useState } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { format } from "@/lib/i18n/format";
-import { company } from "@/lib/site";
 import { ProductWhatsAppLink } from "./product-whatsapp-link";
 import { button } from "./ui";
 import { WhatsAppIcon } from "./whatsapp-icon";
@@ -22,6 +21,8 @@ type Labels = {
 
 type Props = {
   locale: Locale;
+  /** The shop's main line, from the site settings. */
+  contact: { phoneDisplay: string; phoneE164: string; whatsappNumber: string };
   name: string;
   code: string;
   slug: string;
@@ -31,7 +32,7 @@ type Props = {
 };
 
 /** Optional size, colour and quantity, all carried into the pre-filled WhatsApp message. */
-export function ProductEnquiry({ locale, name, code, slug, sizes, colours, labels }: Props) {
+export function ProductEnquiry({ locale, contact, name, code, slug, sizes, colours, labels }: Props) {
   const [size, setSize] = useState<string>();
   const [colour, setColour] = useState<string>();
   const [quantity, setQuantity] = useState(1);
@@ -125,6 +126,7 @@ export function ProductEnquiry({ locale, name, code, slug, sizes, colours, label
 
       <div>
         <ProductWhatsAppLink
+          whatsappNumber={contact.whatsappNumber}
           locale={locale}
           name={name}
           code={code}
@@ -139,11 +141,11 @@ export function ProductEnquiry({ locale, name, code, slug, sizes, colours, label
         </ProductWhatsAppLink>
         <p className="mt-3 text-sm text-muted">{labels.enquireNote}</p>
         <a
-          href={`tel:${company.phoneE164}`}
+          href={`tel:${contact.phoneE164}`}
           className="mt-4 inline-flex h-11 items-center gap-2 text-sm font-semibold underline decoration-line decoration-2 underline-offset-[6px] transition-colors hover:decoration-ink"
         >
           <Phone className="size-4" aria-hidden />
-          <span className="tabular">{format(labels.call, { phone: company.phoneDisplay })}</span>
+          <span className="tabular">{format(labels.call, { phone: contact.phoneDisplay })}</span>
         </a>
       </div>
     </div>

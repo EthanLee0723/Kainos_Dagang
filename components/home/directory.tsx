@@ -5,11 +5,13 @@ import { container } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { plural } from "@/lib/i18n/format";
-import { categories, productsInCategory } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { productsInCategory } from "@/lib/products";
 import { pick } from "@/lib/site";
 
 /** The store directory board: every section of the shop, lit orange on hover. */
-export function Directory({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function Directory({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const catalogue = await getCatalogue();
   return (
     <section id="directory" aria-labelledby="directory-title" className="bg-ink text-paper">
       <div className={`${container} py-16 sm:py-20 lg:py-24`}>
@@ -24,8 +26,8 @@ export function Directory({ dict, locale }: { dict: Dictionary; locale: Locale }
         </div>
 
         <ul className="mt-10 border-t border-ink-line lg:mt-14">
-          {categories.map((category) => {
-            const count = productsInCategory(category.id).length;
+          {catalogue.categories.map((category) => {
+            const count = productsInCategory(catalogue, category.id).length;
             return (
               <li key={category.id} data-reveal className="border-b border-ink-line">
                 <Link

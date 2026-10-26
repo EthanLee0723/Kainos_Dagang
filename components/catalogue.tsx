@@ -10,6 +10,8 @@ export type CatalogueItem = {
   slug: string;
   category: string;
   brand?: string;
+  /** Ids of the badge tags the product carries. */
+  tags: string[];
   /** Lower-cased name in every language + code + brand, for search. */
   haystack: string;
 };
@@ -19,6 +21,8 @@ type Labels = {
   all: string;
   brand: string;
   anyBrand: string;
+  tag: string;
+  anyTag: string;
   category: string;
   clear: string;
   emptyTitle: string;
@@ -32,6 +36,7 @@ type Props = {
   tiles: Record<string, ReactNode>;
   categories: { id: string; name: string }[];
   brands: string[];
+  tags: { id: string; name: string }[];
   labels: Labels;
   locale: string;
   whatsappHref: string;
@@ -44,28 +49,67 @@ function countLabel(locale: string, forms: Labels["results"], count: number) {
 
 const normalise = (value: string) => value.toLowerCase().normalize("NFKD").replace(/\s+/g, " ").trim();
 
+/** A pill-shaped <select>, for the brand and tag filters. */
+function FilterSelect({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: { name: string; any: string };
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; name: string }[];
+}) {
+  const id = useId();
+  return (
+    <div className="relative">
+      <label htmlFor={id} className="sr-only">
+        {label.name}
+      </label>
+      <select
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-11 appearance-none rounded-full border border-line bg-paper pr-9 pl-4 text-sm font-semibold transition-colors hover:border-ink"
+      >
+        <option value="">{label.any}</option>
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.name}
+          </option>
+        ))}
+      </select>
+      <svg aria-hidden viewBox="0 0 12 12" className="pointer-events-none absolute top-1/2 right-4 size-3 -translate-y-1/2">
+        <path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+      </svg>
+    </div>
+  );
+}
+
 /**
- * Filter by section, brand and search. Server-rendered tiles are passed in and
- * shown or hidden here, so the product data never ships to the browser twice.
- * State lives in the URL (?category=&brand=&q=) so filtered views can be shared.
+ * Filter by section, brand, tag and search. Server-rendered tiles are passed in
+ * and shown or hidden here, so the product data never ships to the browser twice.
+ * State lives in the URL (?category=&brand=&tag=&q=) so filtered views can be shared.
  */
-export function Catalogue({ items, tiles, categories, brands, labels, locale, whatsappHref }: Props) {
+export function Catalogue({ items, tiles, categories, brands, tags, labels, locale, whatsappHref }: Props) {
   const params = useSearchParams();
   const [category, setCategory] = useState(() => params.get("category") ?? "");
   const [brand, setBrand] = useState(() => params.get("brand") ?? "");
+  const [tag, setTag] = useState(() => params.get("tag") ?? "");
   const [query, setQuery] = useState(() => params.get("q") ?? "");
   const deferredQuery = useDeferredValue(query);
   const searchId = useId();
-  const brandId = useId();
 
   useEffect(() => {
     const next = new URLSearchParams();
     if (category) next.set("category", category);
     if (brand) next.set("brand", brand);
+    if (tag) next.set("tag", tag);
     if (query.trim()) next.set("q", query.trim());
     const qs = next.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [category, brand, query]);
+  }, [category, brand, tag, query]);
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();
@@ -79,14 +123,16 @@ export function Catalogue({ items, tiles, categories, brands, labels, locale, wh
       (item) =>
         (!category || item.category === category) &&
         (!brand || item.brand === brand) &&
+        (!tag || item.tags.includes(tag)) &&
         terms.every((term) => item.haystack.includes(term)),
     );
-  }, [items, category, brand, deferredQuery]);
+  }, [items, category, brand, tag, deferredQuery]);
 
-  const filtered = Boolean(category || brand || query);
+  const filtered = Boolean(category || brand || tag || query);
   const reset = () => {
     setCategory("");
     setBrand("");
+    setTag("");
     setQuery("");
   };
 
@@ -119,27 +165,20 @@ export function Catalogue({ items, tiles, categories, brands, labels, locale, wh
           </div>
           <div className="flex gap-2">
             {brands.length > 0 && (
-              <div className="relative">
-                <label htmlFor={brandId} className="sr-only">
-                  {labels.brand}
-                </label>
-                <select
-                  id={brandId}
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
-                  className="h-11 appearance-none rounded-full border border-line bg-paper pr-9 pl-4 text-sm font-semibold transition-colors hover:border-ink"
-                >
-                  <option value="">{labels.anyBrand}</option>
-                  {brands.map((b) => (
-                    <option key={b} value={b}>
-                      {b}
-                    </option>
-                  ))}
-                </select>
-                <svg aria-hidden viewBox="0 0 12 12" className="pointer-events-none absolute top-1/2 right-4 size-3 -translate-y-1/2">
-                  <path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                </svg>
-              </div>
+              <FilterSelect
+                label={{ name: labels.brand, any: labels.anyBrand }}
+                value={brand}
+                onChange={setBrand}
+                options={brands.map((b) => ({ value: b, name: b }))}
+              />
+            )}
+            {tags.length > 0 && (
+              <FilterSelect
+                label={{ name: labels.tag, any: labels.anyTag }}
+                value={tag}
+                onChange={setTag}
+                options={tags.map((t) => ({ value: t.id, name: t.name }))}
+              />
             )}
             <div className="relative min-w-0 flex-1 lg:w-72 lg:flex-none">
               <label htmlFor={searchId} className="sr-only">

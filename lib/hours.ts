@@ -69,3 +69,34 @@ export function openingHoursSchema(hours: WeeklyHours) {
     closes,
   }));
 }
+
+/** One day in the admin's hours editor (index = JavaScript day, 0 = Sunday). */
+export type DayHours = { open: boolean; opens: string; closes: string };
+
+/** WeeklyHours → seven day rows, for editing. */
+export function hoursToDays(hours: WeeklyHours): DayHours[] {
+  return Array.from({ length: 7 }, (_, day) => {
+    const row = hours.find((r) => r.days.includes(day));
+    return row ? { open: true, opens: row.opens, closes: row.closes } : { open: false, opens: "10:00", closes: "18:00" };
+  });
+}
+
+/**
+ * Seven day rows → WeeklyHours: consecutive open days (Monday first) with the
+ * same times become one row, which is how hoursRows() expects them.
+ */
+export function daysToHours(days: DayHours[]): WeeklyHours {
+  const rows: WeeklyHours = [];
+  for (const day of [1, 2, 3, 4, 5, 6, 0]) {
+    const { open, opens, closes } = days[day];
+    if (!open) continue;
+    const last = rows[rows.length - 1];
+    const previous = last?.days[last.days.length - 1];
+    if (last && previous !== undefined && weekOrder(previous) === weekOrder(day) - 1 && last.opens === opens && last.closes === closes) {
+      last.days.push(day);
+    } else {
+      rows.push({ days: [day], opens, closes });
+    }
+  }
+  return rows;
+}

@@ -3,6 +3,7 @@ import { button, container } from "@/components/ui";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
+import { getSite } from "@/lib/data/site";
 import { generalEnquiryUrl, quoteEnquiryUrl } from "@/lib/whatsapp";
 
 /**
@@ -10,7 +11,8 @@ import { generalEnquiryUrl, quoteEnquiryUrl } from "@/lib/whatsapp";
  * pair of footprints that stamp in as the visitor scrolls (static when motion
  * is reduced or scroll timelines are unsupported).
  */
-export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const { company } = await getSite();
   return (
     <section aria-labelledby="fitting-title" className="bg-paper">
       <div className={`${container} py-16 sm:py-20 lg:py-28`}>
@@ -51,7 +53,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
               </h3>
               <p className="mt-4 max-w-[48ch] leading-relaxed text-ink/80">{dict.fitting.bulkBody}</p>
             </div>
-            <a href={quoteEnquiryUrl(locale)} target="_blank" rel="noopener" className={`${button.ink} self-start`}>
+            <a href={quoteEnquiryUrl(locale, company.whatsappNumber)} target="_blank" rel="noopener" className={`${button.ink} self-start`}>
               <WhatsAppIcon className="size-5 text-whatsapp" />
               {dict.whatsapp.quote}
             </a>
@@ -62,7 +64,7 @@ export function Fitting({ dict, locale }: { dict: Dictionary; locale: Locale }) 
               <p className="mt-4 max-w-[40ch] leading-relaxed text-paper/70">{dict.fitting.consultBody}</p>
             </div>
             <a
-              href={generalEnquiryUrl(locale)}
+              href={generalEnquiryUrl(locale, company.whatsappNumber)}
               target="_blank"
               rel="noopener"
               className={`${button.outlineOnInk} self-start`}

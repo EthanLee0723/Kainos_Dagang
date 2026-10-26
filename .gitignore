@@ -49,3 +49,7 @@ next-env.d.ts
 
 # browser automation output
 /.playwright-mcp/
+
+# local development database (npm run db:dev) and locally stored uploads
+/.data/
+/uploads/

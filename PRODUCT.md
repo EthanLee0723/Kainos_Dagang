@@ -30,7 +30,7 @@ A company and catalogue site for Kainos Dagang, a Malaysian seller of safety equ
   - **Taman Equine**: No.6-1, Jalan Equine 10D, Taman Equine, 43300 Seri Kembangan. Tel 017-665 8919. This is also the HQ address on the letterhead.
   - **Kota Damansara**: 49-1, Jalan Cecawi 6/19a, Kota Damansara, 47810 Petaling Jaya, Selangor. Tel 017-891 9550.
   - **Klang**: No.16A, Jalan Kampar 1/KU 1, Bukit Kuda Heights, 41300 Klang, Selangor. Tel 017-363 8919.
-- **Opening hours** (from the client, 2026-10-20; each branch card shows its own, `hours` per branch in `lib/site.ts`):
+- **Opening hours** (from the client, 2026-10-20; each branch card shows its own, edited per branch in the admin):
   - Taman Equine (Seri Kembangan): Monday 9am–6pm; Tuesday to Saturday 10am–6pm; Sunday 11am–5pm.
   - Kota Damansara and Klang: Monday to Saturday 10am–7pm; Sunday 10am–5pm.
 
@@ -41,9 +41,9 @@ A company and catalogue site for Kainos Dagang, a Malaysian seller of safety equ
 
 ## Capabilities and Constraints
 
-- Stack: Next.js 16 (App Router), React 19, Tailwind CSS v4, TypeScript (existing scaffold).
-- Product categories confirmed so far: safety shoes, safety helmets, socks. The brand guideline's own mockups also show gloves, goggles, gumboots, traffic batons, and safety netting. The full category list comes from the client's product list.
-- Until the real product list arrives, the catalogue uses clearly marked sample products. They live in one data file so they are easy to replace.
+- Stack: Next.js 16 (App Router), React 19, Tailwind CSS v4, TypeScript, Postgres (Drizzle ORM).
+- The client edits the catalogue (products, photos, categories, brands, colours, sizes, "Suitable for" chips, tags), the branches and the contact details themselves in an admin area at `/admin`, behind one shared password. All site text is entered in all three languages; there is no machine translation (user decision, 2026-10-26).
+- Product categories so far: safety shoes, safety boots, kitchen & hospitality, safety helmets, safety vests. The brand guideline's own mockups also show gloves, goggles, gumboots, traffic batons, and safety netting; the client can add categories in the admin.
 - Content must support three languages (EN / BM / 中文).
 - Open: the real product list and photos, whether any branch keeps different hours or closes on public holidays, and whether there are other contact channels (social media).
 

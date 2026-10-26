@@ -1,13 +1,14 @@
 import type { Locale } from "@/lib/i18n/config";
-import { company } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./whatsapp-icon";
 
 /** Always-visible WhatsApp button, bottom-right on every page. */
-export function WhatsAppFloat({ locale, label }: { locale: Locale; label: string }) {
+export async function WhatsAppFloat({ locale, label }: { locale: Locale; label: string }) {
+  const { company } = await getSite();
   return (
     <a
-      href={generalEnquiryUrl(locale)}
+      href={generalEnquiryUrl(locale, company.whatsappNumber)}
       target="_blank"
       rel="noopener"
       aria-label={label}

@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 import { openingHoursSchema } from "./hours";
 import type { Locale } from "./i18n/config";
-import { getCategory, type Product } from "./products";
-import { branchAddress, branches, company, googleMapsUrl, pick, siteUrl, type Branch } from "./site";
+import { absolutePhotoUrl, type Category, type Product } from "./products";
+import {
+  type Branch,
+  branchAddress,
+  COMPANY_NAME,
+  type Company,
+  googleMapsUrl,
+  pick,
+  type Site,
+  siteUrl,
+} from "./site";
 
 /*
  * SEARCH ENGINE SETUP.
@@ -129,7 +138,7 @@ const logo = {
   contentUrl: absoluteUrl("/logo.png"),
   width: 512,
   height: 512,
-  caption: company.name,
+  caption: COMPANY_NAME,
 };
 
 function postalAddress(branch: Branch) {
@@ -143,8 +152,8 @@ function postalAddress(branch: Branch) {
   };
 }
 
-/** The company, with the HQ address from the letterhead (the Taman Equine branch). */
-export function organizationSchema(locale: Locale, slogan: string) {
+/** The company, with the HQ address from the letterhead (the first branch, Taman Equine). */
+export function organizationSchema({ company, branches }: Site, locale: Locale, slogan: string) {
   const hq = branches[0];
   return {
     "@type": "Organization",
@@ -157,7 +166,7 @@ export function organizationSchema(locale: Locale, slogan: string) {
     slogan,
     email: company.email,
     telephone: company.phoneE164,
-    address: postalAddress(hq),
+    ...(hq ? { address: postalAddress(hq) } : {}),
     identifier: { "@type": "PropertyValue", propertyID: "SSM", value: company.registration },
     areaServed: { "@type": "Country", name: "Malaysia" },
     contactPoint: [
@@ -183,7 +192,7 @@ export function organizationSchema(locale: Locale, slogan: string) {
   };
 }
 
-export function websiteSchema(description: string) {
+export function websiteSchema(company: Company, description: string) {
   return {
     "@type": "WebSite",
     "@id": schemaId.website,
@@ -197,7 +206,7 @@ export function websiteSchema(description: string) {
 }
 
 /** One physical shop: a local business listing Google can match to the branch's map pin. */
-export function storeSchema(branch: Branch, locale: Locale) {
+export function storeSchema(company: Company, branch: Branch, locale: Locale) {
   return {
     "@type": "ShoeStore",
     "@id": schemaId.store(branch),
@@ -230,14 +239,16 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
 }
 
 function productImages(product: Product) {
-  return [product.image, ...(product.gallery ?? [])].filter(Boolean).map((src) => absoluteUrl(src));
+  return [product.image, ...(product.gallery ?? [])]
+    .filter((src): src is string => !!src)
+    .map((src) => absolutePhotoUrl(src, siteUrl));
 }
 
 /**
  * A catalogue item. Prices are never published, so there is no `offers` block:
  * Google reads the product facts, but the page won't get price/stock rich results.
  */
-export function productSchema(product: Product, locale: Locale) {
+export function productSchema(product: Product, category: Category | undefined, locale: Locale) {
   const images = productImages(product);
   const url = absoluteUrl(`/${locale}/products/${product.slug}`);
   return {
@@ -247,7 +258,7 @@ export function productSchema(product: Product, locale: Locale) {
     sku: product.code,
     mpn: product.code,
     description: pick(product.description, locale),
-    category: pick(getCategory(product.category).name, locale),
+    ...(category ? { category: pick(category.name, locale) } : {}),
     url,
     inLanguage: inLanguage[locale],
     ...(images.length ? { image: images } : {}),

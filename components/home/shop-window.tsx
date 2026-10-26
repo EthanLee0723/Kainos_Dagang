@@ -5,7 +5,8 @@ import { container } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { format } from "@/lib/i18n/format";
-import { featuredProducts, products } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { featuredProducts } from "@/lib/products";
 
 /** Arrowhead from the shop's metal MASUK sign. */
 function MasukArrow({ className }: { className?: string }) {
@@ -20,7 +21,8 @@ function MasukArrow({ className }: { className?: string }) {
  * The shop floor right under the signboard: the MASUK door plaque (the way
  * into the catalogue) beside the shop window of featured products.
  */
-export function ShopWindow({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function ShopWindow({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const catalogue = await getCatalogue();
   return (
     <section aria-labelledby="window-title" className="relative overflow-hidden bg-paper">
       <div className={`${container} py-10 sm:py-14 lg:py-16`}>
@@ -38,7 +40,7 @@ export function ShopWindow({ dict, locale }: { dict: Dictionary; locale: Locale 
                 <MasukArrow className="size-[0.82em] shrink-0 transition-transform duration-300 ease-out-strong group-hover:translate-x-[0.12em]" />
               </span>
               <span className="relative z-10 max-w-[18rem] text-[1.05rem] leading-snug font-semibold">
-                {format(dict.masuk.line, { count: products.length })}
+                {format(dict.masuk.line, { count: catalogue.products.length })}
               </span>
               <Bootprint className="pointer-events-none absolute -right-3 -bottom-10 h-44 w-auto rotate-[24deg] text-ink/10" />
               <span
@@ -78,7 +80,7 @@ export function ShopWindow({ dict, locale }: { dict: Dictionary; locale: Locale 
           </div>
 
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {featuredProducts.map((product, i) => (
+            {featuredProducts(catalogue).map((product, i) => (
               <li key={product.slug} data-reveal className="flex">
                 <ProductTile product={product} locale={locale} dict={dict} priority={i < 4} />
               </li>

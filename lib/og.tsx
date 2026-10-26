@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { LOCKUP_MARK_PATHS, LOCKUP_VIEWBOX, LOCKUP_WORD_PATHS } from "@/components/brand/logo-paths";
-import { company } from "./site";
+import { TAGLINE } from "./site";
 
 export const ogSize = { width: 1200, height: 630 };
 
@@ -74,7 +74,7 @@ export async function ogCard({ title, detail }: { title?: string; detail?: strin
               <path key={x} d={`M${x} 0h60l42.5 181h-60z`} fill="#000" />
             ))}
           </svg>
-          <div style={{ fontFamily: "Moderniz", fontSize: 34, color: "#000" }}>{company.tagline.toUpperCase()}</div>
+          <div style={{ fontFamily: "Moderniz", fontSize: 34, color: "#000" }}>{TAGLINE.toUpperCase()}</div>
           <svg width={189} height={96} viewBox="0 0 356 181" style={{ position: "absolute", right: 0, top: 0 }}>
             {[0, 128, 253].map((x) => (
               <path key={x} d={`M${x} 0h60l42.5 181h-60z`} fill="#000" />

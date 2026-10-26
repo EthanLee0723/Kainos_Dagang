@@ -6,8 +6,8 @@ How the site presents itself to Google, Bing and AI assistants, and the one-time
 
 | What | Where | Notes |
 |---|---|---|
-| `robots.txt` | `app/robots.ts` → `/robots.txt` | Allows every crawler and points to the sitemap. Blocks everything on non-live deployments (see "Indexing switch" below). |
-| `sitemap.xml` | `app/sitemap.ts` → `/sitemap.xml` | Every page in all three languages, each with hreflang links to its translations, and every product photo (image sitemap). Updates itself when products are added to `lib/catalogue/`. |
+| `robots.txt` | `app/robots.ts` → `/robots.txt` | Allows every crawler (except into `/admin`) and points to the sitemap. Blocks everything on non-live deployments (see "Indexing switch" below). |
+| `sitemap.xml` | `app/sitemap.ts` → `/sitemap.xml` | Every page in all three languages, each with hreflang links to its translations, and every product photo (image sitemap). Updates itself whenever products are added or changed in the admin. |
 | Canonical + hreflang | `lib/i18n/alternates.ts` | Each page names itself as canonical and links its `en` / `ms` / `zh-Hans` versions. `x-default` is English. Filtered catalogue URLs (`/products?category=…`) point their canonical at `/products`. |
 | Titles and descriptions | `lib/i18n/dictionaries/*.ts` (`meta`), each page's `generateMetadata` | Product pages use the product name, code and summary. |
 | Robots meta | `lib/seo.ts` → `robotsMeta()` | `max-image-preview:large` so Google can show big product photos. |
@@ -100,12 +100,12 @@ Product pages are found through the sitemap; there's no need to request them one
 For "safety shoes near me" and Google Maps, a **Business Profile per branch** matters far more than anything on the website.
 
 1. Go to <https://business.google.com> and create (or claim, if one exists) a profile for each branch: Taman Equine, Kota Damansara, Klang.
-2. Use **exactly** the same name, address and phone as the site (`lib/site.ts`): consistency between the site's structured data and the profile is how Google matches them.
+2. Use **exactly** the same name, address and phone as the site (admin → *Branches*): consistency between the site's structured data and the profile is how Google matches them.
 3. Category: *Shoe store* (primary) plus *Safety equipment supplier* and *Work clothing store*.
 4. Website field: link each profile to `https://<domain>/en` (or the language most of that branch's customers use).
-5. Hours: same as `lib/hours.ts`. Add public-holiday hours when the client knows them.
+5. Hours: same as each branch's opening hours in the admin. Add public-holiday hours when the client knows them.
 6. Add real photos of the shopfront, signage and shelves.
-7. Once live, copy each profile's share link (`https://maps.app.goo.gl/…`) into `company.sameAs` in `lib/site.ts`, along with any Facebook / Instagram / TikTok page the client owns. Those links go into the Organization structured data.
+7. Once live, put each profile's share link (`https://maps.app.goo.gl/…`) in that branch's *Google Maps link* (admin → *Branches*), and add it under *Official social profiles* (admin → *Contact details*) along with any Facebook / Instagram / TikTok page the client owns. Those links go into the Organization structured data.
 
 ## Bing Webmaster Tools (also feeds DuckDuckGo, Yahoo, ChatGPT search)
 
@@ -125,5 +125,5 @@ For "safety shoes near me" and Google Maps, a **Business Profile per branch** ma
 ## Ongoing
 
 - **New products** appear in the sitemap, `llms.txt` and structured data automatically. Give each a real photo and a specific, unique summary in all three languages: that text becomes the search snippet.
-- **Branch or hours change:** edit `lib/site.ts` / `lib/hours.ts` and the Business Profiles on the same day.
+- **Branch or hours change:** edit the branch in the admin and the Business Profile on the same day.
 - **Don't** add fabricated reviews, ratings, prices, certifications or "authorised dealer" claims to the structured data. Google treats misleading structured data as spam (manual action), and `PRODUCT.md` rules them out anyway.

@@ -8,7 +8,9 @@ import { container } from "@/components/ui";
 import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
-import { brands, categories, products, productsByBrand } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { getSite } from "@/lib/data/site";
+import { productsByBrand } from "@/lib/products";
 import { breadcrumbSchema, graph, productListSchema } from "@/lib/seo";
 import { pick } from "@/lib/site";
 import { generalEnquiryUrl } from "@/lib/whatsapp";
@@ -31,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ProductsPage() {
   const locale = await getLocale();
-  const dict = await getDictionary(locale);
+  const [dict, catalogue, { company }] = await Promise.all([getDictionary(locale), getCatalogue(), getSite()]);
+  const { products, categories, brands } = catalogue;
 
   const tiles = Object.fromEntries(
     products.map((p, i) => [p.slug, <ProductTile key={p.slug} product={p} locale={locale} dict={dict} priority={i < 4} headingLevel="h2" />]),
@@ -40,12 +43,17 @@ export default async function ProductsPage() {
     slug: p.slug,
     category: p.category,
     brand: p.brand,
+    tags: p.tags.map((t) => t.id),
     haystack: [p.name.en, p.name.ms, p.name.zh, p.code, p.code.replace(/[^a-z0-9]/gi, ""), p.brand ?? ""]
       .join(" ")
       .toLowerCase()
       .normalize("NFKD"),
   }));
-  const productBrands = brands.filter((b) => productsByBrand(b.name).length > 0).map((b) => b.name);
+  const productBrands = brands.filter((b) => productsByBrand(catalogue, b.name).length > 0).map((b) => b.name);
+  // Only tags some visible product carries are worth filtering by.
+  const productTags = catalogue.tags
+    .filter((tag) => products.some((p) => p.tags.some((t) => t.id === tag.id)))
+    .map((tag) => ({ id: tag.id, name: pick(tag.name, locale) }));
   const jsonLd = graph(
     productListSchema(products, locale, dict.meta.productsTitle, dict.meta.productsDescription),
     breadcrumbSchema([
@@ -83,13 +91,16 @@ export default async function ProductsPage() {
               tiles={tiles}
               categories={categories.map((c) => ({ id: c.id, name: pick(c.name, locale) }))}
               brands={productBrands}
+              tags={productTags}
               locale={locale}
-              whatsappHref={generalEnquiryUrl(locale)}
+              whatsappHref={generalEnquiryUrl(locale, company.whatsappNumber)}
               labels={{
                 search: dict.catalogue.search,
                 all: dict.catalogue.all,
                 brand: dict.catalogue.brand,
                 anyBrand: dict.catalogue.anyBrand,
+                tag: dict.catalogue.tag,
+                anyTag: dict.catalogue.anyTag,
                 category: dict.catalogue.category,
                 clear: dict.catalogue.clear,
                 emptyTitle: dict.catalogue.emptyTitle,

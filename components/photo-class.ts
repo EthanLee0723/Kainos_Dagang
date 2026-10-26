@@ -13,5 +13,9 @@ export function photoClass(fit: Product["imageFit"], { tagged = true } = {}) {
 export const codeTag =
   "font-display tabular pointer-events-none absolute z-10 rounded-sm bg-paper px-2 py-1 leading-none text-ink";
 
+/** A badge tag ("New", "Best seller"), over the top-right of a product photo. */
+export const tagBadge =
+  "rounded-sm bg-orange px-2 py-1 text-[0.68rem] leading-none font-semibold tracking-wider text-ink uppercase";
+
 /** Shared by a tile's photo and the product page's main photo, so one morphs into the other. */
 export const photoTransition = (slug: string) => `photo-${slug}`;

@@ -1,8 +1,9 @@
 import { hoursRows } from "@/lib/hours";
 import en from "@/lib/i18n/dictionaries/en";
-import { categories, getCategory, products } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { getSite } from "@/lib/data/site";
 import { absoluteUrl } from "@/lib/seo";
-import { branchAddress, branches, company } from "@/lib/site";
+import { branchAddress } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -11,7 +12,8 @@ export const dynamic = "force-static";
  * catalogue for AI assistants and answer engines, which otherwise have to
  * piece it together from the rendered pages.
  */
-export function GET() {
+export async function GET() {
+  const [{ categories, products }, { company, branches }] = await Promise.all([getCatalogue(), getSite()]);
   const shops = branches
     .map((b) => {
       const hours = hoursRows(b.hours, "en", en.hours)
@@ -27,7 +29,7 @@ export function GET() {
         .filter((p) => p.category === c.id)
         .map((p) => `- [${p.name.en} (${p.code})](${absoluteUrl(`/en/products/${p.slug}`)}): ${p.summary.en}`)
         .join("\n");
-      return items ? `### ${getCategory(c.id).name.en}\n\n${items}` : "";
+      return items ? `### ${c.name.en}\n\n${items}` : "";
     })
     .filter(Boolean)
     .join("\n\n");

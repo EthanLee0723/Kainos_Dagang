@@ -1,62 +1,59 @@
 import type { Locale } from "./i18n/config";
 import type { Localized } from "./site";
-import { footwear } from "./catalogue/footwear";
-import { gear } from "./catalogue/gear";
-import photos from "./catalogue/photos.json";
 
 /*
- * THE CATALOGUE.
- * Product data lives in lib/catalogue/ (transcribed from the brands' own
- * catalogues and product sheets); photos are in /public/products, listed in
- * lib/catalogue/photos.json. Prices are intentionally absent: all pricing
- * goes through WhatsApp.
+ * THE CATALOGUE: shapes and helpers.
+ * The data lives in the database and is edited in /admin. Server components
+ * load it with getCatalogue() (lib/data/catalogue.ts) and pass it to the
+ * helpers below. Prices are intentionally absent: all pricing goes through WhatsApp.
  */
 
-export type CategoryId = "safety-shoes" | "safety-boots" | "hospitality" | "helmets" | "hi-vis";
+export const pictograms = [
+  "shoe",
+  "boot-mid",
+  "boot-high",
+  "gumboot",
+  "helmet",
+  "glove",
+  "goggles",
+  "glasses",
+  "earmuff",
+  "vest",
+  "sock",
+  "cone",
+  "net",
+  "tape",
+  "baton",
+] as const;
 
-export type Pictogram =
-  | "shoe"
-  | "boot-mid"
-  | "boot-high"
-  | "gumboot"
-  | "helmet"
-  | "glove"
-  | "goggles"
-  | "glasses"
-  | "earmuff"
-  | "vest"
-  | "sock"
-  | "cone"
-  | "net"
-  | "tape"
-  | "baton";
-
-export type UseCase =
-  | "construction"
-  | "factory"
-  | "warehouse"
-  | "logistics"
-  | "workshop"
-  | "oil-gas"
-  | "food"
-  | "plantation"
-  | "roadworks"
-  | "hospitality";
+export type Pictogram = (typeof pictograms)[number];
 
 export type Category = {
-  id: CategoryId;
+  /** Also the catalogue's ?category= value. */
+  id: string;
   name: Localized;
   blurb: Localized;
   pictogram: Pictogram;
+};
+
+/** A "Suitable for" chip or a badge tag. */
+export type Label = { id: string; name: Localized };
+
+export type Brand = {
+  name: string;
+  /** What the brand covers on our shelves. */
+  note: Localized;
+  /** Listed, but no products online yet. */
+  comingSoon: boolean;
 };
 
 export type Product = {
   slug: string;
   code: string;
   brand?: string;
-  category: CategoryId;
+  category: string;
   pictogram: Pictogram;
-  /** Main photo in /public/products. Without one, the pictogram stands in. */
+  /** Main photo. Without one, the pictogram stands in. */
   image?: string;
   /** Further photos: other angles and colourways. */
   gallery?: string[];
@@ -69,117 +66,43 @@ export type Product = {
   sizes?: { label: Localized; values: string[] };
   colours?: Localized[];
   pack?: Localized;
-  uses: UseCase[];
+  suitableFor: Label[];
+  tags: Label[];
   featured?: boolean;
 };
 
-export const categories: Category[] = [
-  {
-    id: "safety-shoes",
-    pictogram: "shoe",
-    name: { en: "Safety Shoes", ms: "Kasut Keselamatan", zh: "安全鞋" },
-    blurb: {
-      en: "Low-cut lace-ups, slip-ons and sporty safety trainers.",
-      ms: "Kasut potongan rendah, sama ada bertali, tanpa tali atau gaya sukan.",
-      zh: "低帮系带、一脚蹬和运动款安全鞋。",
-    },
-  },
-  {
-    id: "safety-boots",
-    pictogram: "boot-high",
-    name: { en: "Safety Boots", ms: "But Keselamatan", zh: "安全靴" },
-    blurb: {
-      en: "Mid and high-cut boots, laced, zipped or pull-on, plus waterproof rain boots.",
-      ms: "But potongan sederhana dan tinggi, sama ada bertali, berzip atau jenis sarung, termasuk but hujan kalis air.",
-      zh: "中帮、高帮安全靴，系带、拉链或套穿，以及防水雨靴。",
-    },
-  },
-  {
-    id: "hospitality",
-    pictogram: "shoe",
-    name: { en: "Kitchen & Hospitality", ms: "Dapur & Hospitaliti", zh: "厨房与餐饮鞋" },
-    blurb: {
-      en: "Slip-resistant clogs and kitchen shoes for wet, greasy floors.",
-      ms: "Klog dan kasut dapur yang tidak licin di lantai basah dan berminyak.",
-      zh: "防滑洞洞鞋和厨房鞋，适合湿滑油腻的地面。",
-    },
-  },
-  {
-    id: "helmets",
-    pictogram: "helmet",
-    name: { en: "Safety Helmets", ms: "Topi Keselamatan", zh: "安全帽" },
-    blurb: {
-      en: "Hard hats in site colours, with ratchet adjustment.",
-      ms: "Topi keselamatan dalam pelbagai warna, dengan pelaras ratchet.",
-      zh: "多种颜色可选，旋钮调节松紧。",
-    },
-  },
-  {
-    id: "hi-vis",
-    pictogram: "vest",
-    name: { en: "Safety Vests", ms: "Vest Keselamatan", zh: "反光背心" },
-    blurb: {
-      en: "Reflective vests so you are seen on site and on the road.",
-      ms: "Vest reflektif supaya anda mudah dilihat di tapak kerja dan di jalan raya.",
-      zh: "反光背心，在工地和路边作业时更醒目、更安全。",
-    },
-  },
-];
-
-const photoIndex = photos as Record<string, { count: number; fit: "contain" | "cover" }>;
-
-export const products: Product[] = [...footwear(), ...gear].map((p) => {
-  const photo = photoIndex[p.slug];
-  if (!photo) return p;
-  const paths = Array.from({ length: photo.count }, (_, i) => `/products/${p.slug}${i ? `-${i + 1}` : ""}.webp`);
-  return { ...p, image: paths[0], gallery: paths.slice(1), imageFit: photo.fit };
-});
-
-export type Brand = {
-  name: string;
-  /** What the brand covers on our shelves. */
-  note: Localized;
-  /** Listed, but no products online yet. */
-  comingSoon?: boolean;
+export type Catalogue = {
+  /** Products shown on the site, in catalogue order. */
+  products: Product[];
+  categories: Category[];
+  /** Brands stocked. Shown as brands stocked, never as "authorised". */
+  brands: Brand[];
+  tags: Label[];
 };
 
-/** Brands stocked. Shown as brands stocked, never as "authorised". */
-export const brands: Brand[] = [
-  { name: "Black Hammer", note: { en: "Safety shoes, boots, rain boots and kitchen clogs", ms: "Kasut, but, but hujan dan klog dapur keselamatan", zh: "安全鞋、安全靴、雨靴和厨房洞洞鞋" } },
-  { name: "Kickers Safety", note: { en: "Leather safety boots and safety trainers", ms: "But keselamatan kulit dan kasut sukan keselamatan", zh: "真皮安全靴和安全运动鞋" } },
-  { name: "Tanker Tec", note: { en: "Metal-free ESD safety footwear", ms: "Kasut keselamatan ESD bebas logam", zh: "无金属 ESD 安全鞋" } },
-  { name: "Hammerland", note: { en: "Value safety shoes and boots", ms: "Kasut dan but keselamatan berpatutan", zh: "高性价比安全鞋和安全靴" } },
-  { name: "To Tect", note: { en: "Safety shoes and sporty safety trainers", ms: "Kasut keselamatan dan kasut sukan keselamatan", zh: "安全鞋和运动款安全鞋" } },
-  { name: "Safex", note: { en: "Kitchen and hospitality footwear", ms: "Kasut dapur dan hospitaliti", zh: "厨房与餐饮鞋" } },
-  { name: "MSA", note: { en: "Safety helmets", ms: "Topi keselamatan", zh: "安全帽" } },
-  { name: "Proguard", note: { en: "Safety helmets", ms: "Topi keselamatan", zh: "安全帽" } },
-  { name: "Big Truck", note: { en: "Safety boots", ms: "But keselamatan", zh: "安全靴" }, comingSoon: true },
-];
-
-export function productsByBrand(name: string) {
-  return products.filter((p) => p.brand === name);
+export function productsByBrand(catalogue: Catalogue, name: string) {
+  return catalogue.products.filter((p) => p.brand === name);
 }
 
-export function getProduct(slug: string) {
-  return products.find((p) => p.slug === slug);
+export function getProduct(catalogue: Catalogue, slug: string) {
+  return catalogue.products.find((p) => p.slug === slug);
 }
 
-export function getCategory(id: CategoryId) {
-  return categories.find((c) => c.id === id)!;
+export function getCategory(catalogue: Catalogue, id: string) {
+  return catalogue.categories.find((c) => c.id === id);
 }
 
-export function isCategoryId(value: string | null | undefined): value is CategoryId {
-  return !!value && categories.some((c) => c.id === value);
+export function productsInCategory(catalogue: Catalogue, id: string) {
+  return catalogue.products.filter((p) => p.category === id);
 }
 
-export function productsInCategory(id: CategoryId) {
-  return products.filter((p) => p.category === id);
+export function featuredProducts(catalogue: Catalogue) {
+  return catalogue.products.filter((p) => p.featured);
 }
-
-export const featuredProducts = products.filter((p) => p.featured);
 
 /** Two neighbours from the same brand and section, then featured gear from other sections. */
-export function relatedProducts(product: Product, limit = 4) {
+export function relatedProducts(catalogue: Catalogue, product: Product, limit = 4) {
+  const { products } = catalogue;
   const siblings = products.filter((p) => p.category === product.category && p.brand === product.brand);
   const at = siblings.findIndex((p) => p.slug === product.slug);
   const near = [...siblings.slice(at + 1), ...siblings.slice(0, at)].slice(0, 2);
@@ -197,4 +120,9 @@ export function sizeSummary(product: Product, locale: Locale) {
     return `${prefix}${values[0]}–${values[values.length - 1]}`;
   }
   return values.join(" · ");
+}
+
+/** Photo URLs are site paths (/products/…) or absolute (uploaded to Blob storage). */
+export function absolutePhotoUrl(src: string, origin: string) {
+  return /^https?:\/\//.test(src) ? src : `${origin}${src}`;
 }

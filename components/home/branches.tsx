@@ -5,10 +5,12 @@ import { button, container } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { hoursRows } from "@/lib/hours";
-import { branches, googleMapsUrl, pick, wazeUrl } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
+import { googleMapsUrl, pick, wazeUrl } from "@/lib/site";
 
 /** Three shopfronts, each headed by its own small signboard. */
-export function Branches({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function Branches({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const { branches } = await getSite();
   return (
     <section id="branches" aria-labelledby="branches-title" className="scroll-mt-4 bg-floor">
       <div className={`${container} py-16 sm:py-20 lg:py-24`}>

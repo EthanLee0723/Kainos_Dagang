@@ -4,15 +4,17 @@ import { NavRow } from "@/components/site-nav";
 import { container } from "@/components/ui";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
-import { categories } from "@/lib/products";
-import { branches, company, pick } from "@/lib/site";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { getSite } from "@/lib/data/site";
+import { pick } from "@/lib/site";
 
 /**
  * The first viewport is the shop's black signboard: nav along its top edge,
  * the lockup at signage scale, a category board set into the face, and the
  * legal "owned by" line along the bottom edge, as on the real signs.
  */
-export function SignboardHero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export async function SignboardHero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const [{ categories }, { company, branches }] = await Promise.all([getCatalogue(), getSite()]);
   return (
     <header className="bg-ink text-paper">
       <div className={container}>

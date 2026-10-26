@@ -1,8 +1,12 @@
 import type { Locale } from "./i18n/config";
-import { company } from "./site";
 
-export function whatsappUrl(message: string) {
-  return `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(message)}`;
+/*
+ * WhatsApp click-to-chat links. `number` is the main line in international
+ * form without the "+" (site.company.whatsappNumber, from lib/data/site).
+ */
+
+export function whatsappUrl(number: string, message: string) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 const generalMessage: Record<Locale, string> = {
@@ -17,12 +21,12 @@ const quoteMessage: Record<Locale, string> = {
   zh: "您好 Kainos Dagang，我们公司想批量采购安全用品，麻烦提供报价，谢谢。",
 };
 
-export function generalEnquiryUrl(locale: Locale) {
-  return whatsappUrl(generalMessage[locale]);
+export function generalEnquiryUrl(locale: Locale, number: string) {
+  return whatsappUrl(number, generalMessage[locale]);
 }
 
-export function quoteEnquiryUrl(locale: Locale) {
-  return whatsappUrl(quoteMessage[locale]);
+export function quoteEnquiryUrl(locale: Locale, number: string) {
+  return whatsappUrl(number, quoteMessage[locale]);
 }
 
 const productCopy: Record<
@@ -77,6 +81,6 @@ export function productMessage(locale: Locale, enquiry: ProductEnquiry) {
   return lines.join("\n");
 }
 
-export function productEnquiryUrl(locale: Locale, enquiry: ProductEnquiry) {
-  return whatsappUrl(productMessage(locale, enquiry));
+export function productEnquiryUrl(locale: Locale, number: string, enquiry: ProductEnquiry) {
+  return whatsappUrl(number, productMessage(locale, enquiry));
 }

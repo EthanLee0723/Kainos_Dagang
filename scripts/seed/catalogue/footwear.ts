@@ -1,5 +1,4 @@
-import type { CategoryId, Pictogram, Product, UseCase } from "../products";
-import type { Localized } from "../site";
+import type { CategoryId, Localized, Pictogram, Product, UseCase } from "./legacy";
 import { type ColourKey, type Cut, colour, euSizes, type FeatureKey, feature, type Sizes, style, type StyleKey, ukSizes } from "./vocab";
 
 /*

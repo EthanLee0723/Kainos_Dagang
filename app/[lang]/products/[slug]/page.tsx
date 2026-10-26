@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductEnquiry } from "@/components/product-enquiry";
-import { codeTag } from "@/components/photo-class";
+import { codeTag, tagBadge } from "@/components/photo-class";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductArt, ProductTile } from "@/components/product-tile";
 import { SiteHeader } from "@/components/site-header";
@@ -12,19 +12,23 @@ import { container } from "@/components/ui";
 import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
-import { getCategory, getProduct, products, relatedProducts } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { getSite } from "@/lib/data/site";
+import { getCategory, getProduct, relatedProducts } from "@/lib/products";
 import { breadcrumbSchema, graph, productSchema } from "@/lib/seo";
-import { branches, pick } from "@/lib/site";
+import { pick } from "@/lib/site";
 
-export const dynamicParams = false;
+// Products added in the admin after a build render on first visit, then stay cached.
+export const dynamicParams = true;
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { products } = await getCatalogue();
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = getProduct(await getCatalogue(), slug);
   if (!product) return {};
   const locale = await getLocale();
   const title = `${pick(product.name, locale)} (${product.code})`;
@@ -39,13 +43,14 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/products/[
 
 export default async function ProductPage({ params }: PageProps<"/[lang]/products/[slug]">) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const [catalogue, { company, branches }] = await Promise.all([getCatalogue(), getSite()]);
+  const product = getProduct(catalogue, slug);
   if (!product) notFound();
 
   const locale = await getLocale();
   const dict = await getDictionary(locale);
   const name = pick(product.name, locale);
-  const category = getCategory(product.category);
+  const category = getCategory(catalogue, product.category);
   const sizes = product.sizes && {
     label: pick(product.sizes.label, locale),
     values: product.sizes.values,
@@ -53,7 +58,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
   };
 
   const jsonLd = graph(
-    productSchema(product, locale),
+    productSchema(product, category, locale),
     breadcrumbSchema([
       { name: dict.nav.home, path: `/${locale}` },
       { name: dict.product.backToProducts, path: `/${locale}/products` },
@@ -73,17 +78,21 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
                   {dict.product.backToProducts}
                 </Link>
               </li>
-              <li aria-hidden>
-                <ChevronRight className="size-4" />
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/products?category=${category.id}`}
-                  className="inline-flex h-11 items-center hover:text-ink"
-                >
-                  {pick(category.name, locale)}
-                </Link>
-              </li>
+              {category && (
+                <>
+                  <li aria-hidden>
+                    <ChevronRight className="size-4" />
+                  </li>
+                  <li>
+                    <Link
+                      href={`/${locale}/products?category=${category.id}`}
+                      className="inline-flex h-11 items-center hover:text-ink"
+                    >
+                      {pick(category.name, locale)}
+                    </Link>
+                  </li>
+                </>
+              )}
             </ol>
           </nav>
 
@@ -112,6 +121,15 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
             </div>
 
             <div className="rise [--rise-delay:80ms]">
+              {product.tags.length > 0 && (
+                <ul className="mb-4 flex flex-wrap gap-1.5">
+                  {product.tags.map((tag) => (
+                    <li key={tag.id} className={tagBadge}>
+                      {pick(tag.name, locale)}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <h1 className="text-[1.9rem] leading-[1.12] font-semibold tracking-[-0.015em] sm:text-[2.4rem]">
                 {name}
               </h1>
@@ -130,6 +148,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
               <div className="mt-8 border-t border-line pt-8">
                 <ProductEnquiry
                   locale={locale}
+                  contact={company}
                   name={name}
                   code={product.code}
                   slug={product.slug}
@@ -182,16 +201,18 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
                 </div>
               </div>
 
-              <div className="mt-10 border-t border-line pt-8">
-                <h2 className="text-sm font-semibold">{dict.product.suitableFor}</h2>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {product.uses.map((use) => (
-                    <li key={use} className="rounded-full bg-floor px-3.5 py-1.5 text-sm">
-                      {dict.uses[use]}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {product.suitableFor.length > 0 && (
+                <div className="mt-10 border-t border-line pt-8">
+                  <h2 className="text-sm font-semibold">{dict.product.suitableFor}</h2>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {product.suitableFor.map((use) => (
+                      <li key={use.id} className="rounded-full bg-floor px-3.5 py-1.5 text-sm">
+                        {pick(use.name, locale)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -202,7 +223,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
               {dict.product.related}
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {relatedProducts(product).map((p) => (
+              {relatedProducts(catalogue, product).map((p) => (
                 <li key={p.slug} data-reveal className="flex">
                   <ProductTile product={p} locale={locale} dict={dict} />
                 </li>

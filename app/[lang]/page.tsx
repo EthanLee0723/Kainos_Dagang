@@ -12,7 +12,7 @@ import { alternatesFor } from "@/lib/i18n/alternates";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
 import { absoluteUrl, graph, schemaId, storeSchema } from "@/lib/seo";
-import { branches } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const dict = await getDictionary(locale);
+  const [dict, { company, branches }] = await Promise.all([getDictionary(locale), getSite()]);
 
   // The Organization and WebSite nodes come from the layout; the home page adds the shops.
   const jsonLd = graph(
@@ -38,7 +38,7 @@ export default async function HomePage() {
       isPartOf: { "@id": schemaId.website },
       about: { "@id": schemaId.organization },
     },
-    ...branches.map((b) => storeSchema(b, locale)),
+    ...branches.map((b) => storeSchema(company, b, locale)),
   );
 
   return (

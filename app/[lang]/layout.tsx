@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_SC, Poppins } from "next/font/google";
-import localFont from "next/font/local";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
@@ -9,35 +7,14 @@ import { htmlLang, locales } from "@/lib/i18n/config";
 import { openGraphFor } from "@/lib/i18n/open-graph";
 import { getDictionary, getLocale } from "@/lib/i18n/server";
 import { graph, keywords, organizationSchema, robotsMeta, siteVerification, websiteSchema } from "@/lib/seo";
-import { company, siteUrl } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
+import { siteUrl } from "@/lib/site";
+import { fontVariables } from "../fonts";
 import "../globals.css";
 
-// Primary display face from the brand guideline (licensed for web use, per the client).
-const moderniz = localFont({
-  src: "../fonts/Moderniz.otf",
-  variable: "--font-moderniz",
-  weight: "400",
-  display: "swap",
-});
-
-// Secondary face from the guideline: body copy and interface.
-const poppins = Poppins({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-// Chinese glyphs. Split by unicode-range, so slices only download where Chinese text appears.
-const notoSansSC = Noto_Sans_SC({
-  subsets: ["latin"],
-  variable: "--font-cjk",
-  display: "swap",
-  preload: false,
-});
-
-export const dynamicParams = false;
-
+// No `dynamicParams = false` here: it would apply to every page below, so products added
+// in the admin (and pages regenerated after an admin save) would 404. Unknown languages
+// never get this far: proxy.ts redirects them, and getLocale() 404s on anything else.
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
@@ -48,7 +25,7 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const dict = await getDictionary(locale);
+  const [dict, { company }] = await Promise.all([getDictionary(locale), getSite()]);
   return {
     metadataBase: new URL(siteUrl),
     title: { default: dict.meta.title, template: `%s | Kainos Dagang` },
@@ -74,13 +51,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   const locale = await getLocale();
-  const dict = await getDictionary(locale);
+  const [dict, site] = await Promise.all([getDictionary(locale), getSite()]);
 
   return (
     <html
       lang={htmlLang[locale]}
       data-scroll-behavior="smooth"
-      className={`${moderniz.variable} ${poppins.variable} ${notoSansSC.variable}`}
+      className={fontVariables}
     >
       <body className="min-h-dvh">
         <a
@@ -93,7 +70,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <SiteFooter dict={dict} locale={locale} />
         <WhatsAppFloat locale={locale} label={dict.whatsapp.float} />
         <ScrollReveal />
-        <JsonLd data={graph(organizationSchema(locale, dict.tagline), websiteSchema(dict.meta.description))} />
+        <JsonLd data={graph(organizationSchema(site, locale, dict.tagline), websiteSchema(site.company, dict.meta.description))} />
       </body>
     </html>
   );

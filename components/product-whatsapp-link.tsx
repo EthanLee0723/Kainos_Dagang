@@ -7,6 +7,8 @@ import { useOrigin } from "./use-origin";
 
 type Props = {
   locale: Locale;
+  /** The shop's WhatsApp number, international form without "+". */
+  whatsappNumber: string;
   name: string;
   code: string;
   slug: string;
@@ -21,6 +23,7 @@ type Props = {
 /** A WhatsApp link pre-filled with the product name, code, link, size, colour and quantity. */
 export function ProductWhatsAppLink({
   locale,
+  whatsappNumber,
   name,
   code,
   slug,
@@ -32,7 +35,7 @@ export function ProductWhatsAppLink({
   children,
 }: Props) {
   const origin = useOrigin();
-  const href = productEnquiryUrl(locale, {
+  const href = productEnquiryUrl(locale, whatsappNumber, {
     name,
     code,
     size,

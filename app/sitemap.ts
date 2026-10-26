@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { locales, type Locale } from "@/lib/i18n/config";
-import { products } from "@/lib/products";
+import { getCatalogue } from "@/lib/data/catalogue";
+import { absolutePhotoUrl } from "@/lib/products";
 import { absoluteUrl } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 
 /** hreflang codes, matching lib/i18n/alternates.ts. */
 const hreflang: Record<Locale, string> = { en: "en", ms: "ms", zh: "zh-Hans" };
@@ -14,13 +16,14 @@ const hreflang: Record<Locale, string> = { en: "en", ms: "ms", zh: "zh-Hans" };
  * lastmod once it notices the value isn't accurate. <changefreq> and <priority>
  * are omitted too; Google ignores both.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { products } = await getCatalogue();
   const pages: { path: string; images?: string[] }[] = [
     { path: "" },
     { path: "/products" },
     ...products.map((p) => ({
       path: `/products/${p.slug}`,
-      images: [p.image, ...(p.gallery ?? [])].filter((src): src is string => !!src).map((src) => absoluteUrl(src)),
+      images: [p.image, ...(p.gallery ?? [])].filter((src): src is string => !!src).map((src) => absolutePhotoUrl(src, siteUrl)),
     })),
   ];
 

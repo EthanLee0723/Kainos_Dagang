@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-import { company } from "@/lib/site";
+import { getSite } from "@/lib/data/site";
 
 /** /manifest.webmanifest: name, colours and icons for "Add to Home Screen" and Android's browser chrome. */
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const { company } = await getSite();
   return {
     name: company.legalName,
     short_name: company.name,

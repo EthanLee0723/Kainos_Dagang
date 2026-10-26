@@ -6,10 +6,10 @@ export default function robots(): MetadataRoute.Robots {
   if (!indexable) {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
-  // Nothing is disallowed: Google must fetch /_next/ (scripts, styles, optimised
-  // product photos) to render pages and index the images.
+  // Only the admin is disallowed: Google must fetch /_next/ (scripts, styles,
+  // optimised product photos) to render pages and index the images.
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: { userAgent: "*", allow: "/", disallow: "/admin" },
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

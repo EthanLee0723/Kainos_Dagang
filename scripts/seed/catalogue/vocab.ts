@@ -1,4 +1,4 @@
-import type { Localized } from "../site";
+import type { Localized } from "./legacy";
 
 /*
  * Shared wording for the catalogue, in all three languages. Product data
