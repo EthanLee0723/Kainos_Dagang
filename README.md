@@ -21,7 +21,7 @@ npm run start
 - **Data:** products, categories, brands, colours, sizes, "Suitable for" chips, tags, branches and contact details live in Postgres (schema: `lib/db/schema.ts`) and are edited at `/admin`. Pages load them with `getCatalogue()` (`lib/data/catalogue.ts`) and `getSite()` (`lib/data/site.ts`).
 - **Updates:** public pages are pre-rendered. After any admin save, every page, the sitemap and `llms.txt` are regenerated on their next visit (`lib/admin/revalidate.ts`), so changes show straight away. Products added in the admin get their page on first visit.
 - **WhatsApp:** every WhatsApp button (the floating button and each product's button) opens a chat with the main line set under *Contact details* in the admin. A product enquiry pre-fills the product name, code, chosen size, colour and quantity, plus a link to the product page. The message templates are in `lib/whatsapp.ts`.
-- **Photos:** the original catalogue photos ship in `public/products/`. Photos uploaded in the admin are shrunk in the browser (at most 2000px, WebP) and stored in Vercel Blob, or in `./uploads` (served at `/media/…`) when `BLOB_READ_WRITE_TOKEN` isn't set (`lib/admin/storage.ts`).
+- **Photos:** the original catalogue photos ship in `public/products/`. Photos uploaded in the admin are shrunk in the browser (at most 2000px, WebP) and stored in Vercel Blob on Vercel (or wherever `BLOB_READ_WRITE_TOKEN` / `BLOB_STORE_ID` is set), otherwise in `./uploads`, served at `/media/…` (`lib/admin/storage.ts`). If an upload fails, the admin shows the reason next to the file name, and the host's runtime logs have the details.
 - **SEO:** `robots.txt`, `sitemap.xml` (with hreflang and product photos), the web manifest, `llms.txt` and schema.org structured data are all generated from the same data. See [`docs/SEO.md`](docs/SEO.md).
 
 ## The admin (`/admin`)
@@ -44,7 +44,7 @@ npm run start
 ## Before going live
 
 - **Database:** create a Postgres database on [Neon](https://neon.tech) (free tier; also available from the Vercel Marketplace) and set `DATABASE_URL` to its pooled connection string. Then, once, from your machine: `DATABASE_URL="…" npm run db:migrate` and `DATABASE_URL="…" npm run db:seed`. Builds need this database: `next build` pre-renders every public page from it.
-- **Photo storage:** on Vercel, create a Blob store and set `BLOB_READ_WRITE_TOKEN`. On a server with a persistent disk you can leave it unset and photos go to `./uploads` (back it up with the database).
+- **Photo storage:** on Vercel, create a Blob store, connect it to the project (that sets `BLOB_READ_WRITE_TOKEN` or `BLOB_STORE_ID` for you) and **redeploy**: environment variables only reach deployments made after they were added. On a server with a persistent disk you can skip this and photos go to `./uploads` (back it up with the database).
 - **Admin:** set `ADMIN_PASSWORD` and `SESSION_SECRET` (`openssl rand -base64 32`). The admin is at `https://<domain>/admin`.
 - Set `NEXT_PUBLIC_SITE_URL` to the real domain (e.g. `https://www.kainosdagang.com`) so link previews and SEO tags use absolute URLs. **Search engines are told not to index the site until it is set.** WhatsApp product links already use whatever domain the visitor is on. All environment variables are listed in `.env.example`.
 - Verify the site in Google Search Console and Bing Webmaster Tools, submit the sitemap, and set up a Google Business Profile per branch: step by step in [`docs/SEO.md`](docs/SEO.md).

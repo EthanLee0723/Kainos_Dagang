@@ -6,10 +6,13 @@ import { del, put } from "@vercel/blob";
 
 /*
  * Where uploaded product photos go:
- * - BLOB_READ_WRITE_TOKEN set: Vercel Blob (public URLs on *.blob.vercel-storage.com).
- * - Not set: ./uploads on this server's disk, served at /media/<file>. Fine for
- *   local development or a VPS with a persistent disk; not for Vercel, whose disk
- *   is wiped on every deploy.
+ * - On Vercel, or wherever Blob credentials are set: Vercel Blob (public URLs on
+ *   *.public.blob.vercel-storage.com). A store connected in the Vercel dashboard
+ *   authenticates either with BLOB_READ_WRITE_TOKEN or with OIDC + BLOB_STORE_ID;
+ *   @vercel/blob reads both.
+ * - Otherwise: ./uploads on this server's disk, served at /media/<file>. Fine for
+ *   local development or a VPS with a persistent disk. Never on Vercel, whose
+ *   disk is read-only.
  * Photos under /products/ ship with the site and are never deleted from here.
  */
 
@@ -21,7 +24,8 @@ export const PHOTO_TYPES: Record<string, string> = {
   "image/png": "png",
 };
 
-const blobConfigured = () => !!process.env.BLOB_READ_WRITE_TOKEN;
+const blobConfigured = () =>
+  !!(process.env.VERCEL || process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 
 export async function storePhoto(file: File, nameHint: string) {
   const ext = PHOTO_TYPES[file.type];

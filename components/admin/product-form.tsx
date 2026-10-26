@@ -107,7 +107,7 @@ export function ProductForm({
   const [slugTouched, setSlugTouched] = useState(false);
   const [pictogramTouched, setPictogramTouched] = useState(!!initial.id);
   const [uploading, setUploading] = useState(0);
-  const [uploadErrors, setUploadErrors] = useState<string[]>([]);
+  const [uploadErrors, setUploadErrors] = useState<{ name: string; reason: string }[]>([]);
   const [pending, startTransition] = useTransition();
   const [deleting, startDelete] = useTransition();
   const fileInput = useRef<HTMLInputElement>(null);
@@ -138,12 +138,20 @@ export function ProductForm({
         body.append("file", await shrink(file));
         body.append("name", values.code || "photo");
         const res = await fetch("/api/admin/photos", { method: "POST", body });
-        if (!res.ok) throw new Error(String(res.status));
+        if (!res.ok) {
+          // The upload route explains itself; anything else (e.g. the host's own size limit) gives a status.
+          const reason = await res
+            .json()
+            .then((data: { error?: string }) => data.error)
+            .catch(() => undefined);
+          throw new Error(reason ?? `HTTP ${res.status}`);
+        }
         const { url } = (await res.json()) as { url: string };
         setValues((v) => ({ ...v, photos: [...v.photos, { key: url, url, fresh: true }] }));
         setStatus(undefined);
-      } catch {
-        setUploadErrors((names) => [...names, file.name]);
+      } catch (error) {
+        const reason = error instanceof Error ? error.message : String(error);
+        setUploadErrors((list) => [...list, { name: file.name, reason }]);
       } finally {
         setUploading((n) => n - 1);
       }
@@ -384,9 +392,9 @@ export function ProductForm({
             </span>
           )}
         </div>
-        {uploadErrors.map((name) => (
-          <p key={name} className={errorText}>
-            {fill(p.uploadFailed, { name })}
+        {uploadErrors.map((e, i) => (
+          <p key={`${e.name}-${i}`} role="alert" className={errorText}>
+            {fill(p.uploadFailed, { name: e.name })} {e.reason}
           </p>
         ))}
         {err("photos") && <p className={errorText}>{err("photos")}</p>}
