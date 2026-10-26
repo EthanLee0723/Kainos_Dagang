@@ -63,7 +63,7 @@ const bhClassic: Line = {
     zh: "Black Hammer 经典系列是天天穿的耐用款：真皮鞋面、钢头防砸、耐油大底，工厂、仓库、车间都适用。11 和 12 码需稍微加价，详情可 WhatsApp 我们。",
   },
   features: ["leather", "steelToe", "oilResistant"],
-  uses: ["factory", "warehouse", "workshop"],
+  uses: ["construction", "light-construction"],
 };
 
 const bh2000: Line = {
@@ -80,7 +80,7 @@ const bh2000: Line = {
     zh: "2000 系列采用真皮鞋面，钢头可承受 200 焦耳冲击，钢板中底挡住铁钉和尖锐碎片，不怕扎穿鞋底。耐油大底可耐 180°C 高温，鞋垫吸震，长时间上班脚也不容易累。",
   },
   features: ["leather", "steelToe", "steelMidsole", "oilResistant"],
-  uses: ["construction", "factory", "warehouse", "workshop"],
+  uses: ["construction", "light-construction"],
 };
 
 const bh4000: Line = {
@@ -97,7 +97,7 @@ const bh4000: Line = {
     zh: "Black Hammer 4000 系列为高强度工地而设：钢头可承受 200 焦耳冲击和 15,000 牛压力，钢板中底可抵御 1,100 牛穿刺，配耐油橡胶大底。鞋面与鞋底以双锁缝线牢牢接合，更耐穿。",
   },
   features: ["leather", "steelToe", "steelMidsole", "oilResistant", "doubleLock"],
-  uses: ["construction", "factory", "oil-gas", "workshop"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhSport: Line = {
@@ -114,7 +114,7 @@ const bhSport: Line = {
     zh: "Black Hammer 运动系列外型和脚感都像运动鞋，但防护鞋头和防刺穿中底一样不少。很适合仓库、物流，以及上班要走很多路的人。",
   },
   features: [],
-  uses: ["warehouse", "logistics", "factory"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhSafety: Line = {
@@ -130,7 +130,7 @@ const bhSafety: Line = {
     zh: "出自 Black Hammer 男款安全系列：皮革鞋面，钢头加钢板防刺穿中底，适合建筑工地、工厂和车间。",
   },
   features: ["leather", "steelToe", "steelMidsole"],
-  uses: ["construction", "factory", "workshop"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhFastLock: Line = {
@@ -163,7 +163,7 @@ const bhUltraGrip: Line = {
     zh: "Black Hammer 的旗舰系列。HydroGuard 防水内膜、接缝密封，双脚保持干爽；UltraGrip Pro 大底以橡胶抓地、EVA 缓震，久站久走也舒服；ESD 设计加防静电鞋垫，减少静电。按 EN S3 标准制造。",
   },
   features: ["waterproofMembrane", "compositeToe", "kevlarMidsole", "ultraGrip", "fastLock", "esd"],
-  uses: ["factory", "logistics", "construction"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhGoodyear: Line = {
@@ -180,7 +180,7 @@ const bhGoodyear: Line = {
     zh: "固特异沿条工艺通过一条皮质沿条，把鞋面、内底和大底缝合在一起，是制鞋工艺中最牢固耐用的做法之一。皮质鞋面和内里，软木垫层，钢头加钢板中底。",
   },
   features: ["goodyear", "leather", "steelToe", "steelMidsole"],
-  uses: ["construction", "oil-gas", "workshop"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhMotor: Line = {
@@ -197,7 +197,7 @@ const bhMotor: Line = {
     zh: "Black Hammer 骑行靴专为送货骑士和骑摩托上班的人设计：鞋头有换挡护垫，钢头加钢板中底，配双锁缝线的耐燃油橡胶大底。",
   },
   features: ["leather", "steelToe", "steelMidsole", "fuelOilResistant"],
-  uses: ["logistics", "construction"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhWaterproof: Line = {
@@ -214,7 +214,7 @@ const bhWaterproof: Line = {
     zh: "Black Hammer 防水系列：防水皮革鞋面，鞋头和鞋底全面防护，适合经常积水、满地泥泞的工地。",
   },
   features: ["waterproof"],
-  uses: ["construction", "plantation", "oil-gas"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhRain: Line = {
@@ -231,7 +231,7 @@ const bhRain: Line = {
     zh: "适合潮湿工地、冲洗区、园丘和食品厂。完全防水，收工后用水一冲就干净，鞋底有防滑纹。",
   },
   features: ["waterproof", "slipResistant"],
-  uses: ["plantation", "food", "construction"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhLadies: Line = {
@@ -248,7 +248,7 @@ const bhLadies: Line = {
     zh: "很多女性只能将就穿小码男鞋，怎么穿都不太合脚。女款系列按女性脚型制作，英码 4 至 10，钢头、钢板中底、耐油大底一样不少。欢迎到店试穿。",
   },
   features: ["steelToe", "steelMidsole", "oilResistant"],
-  uses: ["factory", "warehouse", "food"],
+  uses: ["construction", "light-construction"],
 };
 
 const bhHospitality: Line = {
@@ -302,7 +302,7 @@ const hammerland: Line = {
     zh: "Hammerland 把基本防护做得扎实：钢头、钢板防刺穿中底、耐油或防滑大底，价格实惠，适合给整个团队采购。",
   },
   features: ["steelToe", "steelMidsole"],
-  uses: ["construction", "factory", "warehouse"],
+  uses: ["logistics", "light-industry"],
 };
 
 const hammerland4000: Line = {
@@ -313,7 +313,7 @@ const hammerland4000: Line = {
     zh: "Hammerland 皮革系列：钢头加钢板中底，耐油橡胶大底，鞋面与鞋底双锁缝合，在工地上更耐穿。",
   },
   features: ["leather", "steelToe", "steelMidsole", "oilResistant", "doubleLock"],
-  uses: ["construction", "factory", "workshop"],
+  uses: ["logistics", "light-industry"],
 };
 
 // ─── To Tect ───────────────────────────────────────────────────────────────
@@ -331,7 +331,7 @@ const toelect: Line = {
     zh: "To Tect SR 系列简单实用：钢头、钢板中底、耐油 PU 大底，适合日常工地和工厂穿着。",
   },
   features: ["steelToe", "steelMidsole", "oilResistant", "puSole"],
-  uses: ["construction", "factory", "warehouse"],
+  uses: ["logistics", "light-industry"],
 };
 
 const toelectSport: Line = {
@@ -348,7 +348,7 @@ const toelectSport: Line = {
     zh: "To Tect 运动系列采用透气飞织鞋面、复合材料鞋头和凯夫拉中底，全鞋无金属，穿起来更轻。快锁旋钮一转就能收紧。",
   },
   features: ["flyknit", "compositeToe", "kevlarMidsole", "rubberEva", "fastLock"],
-  uses: ["warehouse", "logistics", "factory"],
+  uses: ["logistics", "light-industry"],
 };
 
 // ─── Kickers Safety ───────────────────────────────────────────────────────────────
@@ -366,7 +366,7 @@ const kickers: Line = {
     zh: "Kickers Safety 安全靴采用真皮和宽楦设计，长时间穿着脚趾也不挤。每款都配有防护鞋头和防刺穿中底，具体配置请看产品特点。",
   },
   features: ["leather", "wideToe"],
-  uses: ["construction", "oil-gas", "factory"],
+  uses: ["construction", "light-construction"],
 };
 
 const kickersMesh: Line = {
@@ -383,7 +383,7 @@ const kickersMesh: Line = {
     zh: "网面鞋面配 TPU 覆盖层，保持透气；复合材料鞋头和凯夫拉中底更轻便；ESD 防护适合电子厂和洁净车间。",
   },
   features: ["mesh", "compositeToe", "kevlarMidsole", "esd"],
-  uses: ["factory", "warehouse", "logistics"],
+  uses: ["construction", "light-construction"],
 };
 
 // ─── Tanker Tec ────────────────────────────────────────────────────────────
@@ -401,7 +401,7 @@ const tankerTec: Line = {
     zh: "Tanker Tec 全鞋不含金属：复合材料鞋头（EN ISO 20345:2011）配凯夫拉防刺穿中底（EN 12568:2010），过大多数安检门都不会响。大底耐油、防滑、耐高温（EN ISO 20344:2011），ESD 设计可消散静电。",
   },
   features: ["compositeToe", "kevlarMidsole", "metalFree", "oilResistant", "slipResistant", "heatResistant300", "esd"],
-  uses: ["factory", "warehouse", "construction"],
+  uses: ["construction", "light-construction"],
 };
 
 // ─── The range ─────────────────────────────────────────────────────────────

@@ -16,7 +16,8 @@ export type Pictogram =
 
 export type UseCase =
   | "construction" | "factory" | "warehouse" | "logistics" | "workshop"
-  | "oil-gas" | "food" | "plantation" | "roadworks" | "hospitality";
+  | "oil-gas" | "food" | "plantation" | "roadworks" | "hospitality"
+  | "light-construction" | "light-industry";
 
 export type Category = { id: CategoryId; name: Localized; blurb: Localized; pictogram: Pictogram };
 
@@ -195,4 +196,6 @@ export const uses: Record<UseCase, Localized> = {
   "plantation": { en: "Plantation", ms: "Ladang", zh: "园丘" },
   "roadworks": { en: "Roadworks", ms: "Kerja jalan raya", zh: "道路工程" },
   "hospitality": { en: "Kitchens & hospitality", ms: "Dapur & hospitaliti", zh: "厨房与餐饮业" },
+  "light-construction": { en: "Light construction", ms: "Pembinaan ringan", zh: "轻型施工" },
+  "light-industry": { en: "Light industry", ms: "Industri ringan", zh: "轻工业" },
 };
