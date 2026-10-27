@@ -63,7 +63,7 @@ export async function ShopWindow({ dict, locale }: { dict: Dictionary; locale: L
             </div>
 
             {/* Walking down the page toward the viewer: the left foot falls on screen-right. */}
-            <div aria-hidden className="relative hidden h-80 text-line/70 lg:block">
+            <div aria-hidden className="relative hidden h-80 text-orange lg:block">
               {[
                 { left: true, x: "left-20", y: "top-0" },
                 { left: false, x: "left-4", y: "top-[4.5rem]" },
