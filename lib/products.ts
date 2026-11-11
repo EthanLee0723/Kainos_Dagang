@@ -24,6 +24,7 @@ export const pictograms = [
   "net",
   "tape",
   "baton",
+  "harness",
 ] as const;
 
 export type Pictogram = (typeof pictograms)[number];

@@ -220,6 +220,32 @@ const art: Record<PictogramKey, ReactNode> = {
       <path d="M150 46l6-6M152 61h7M150 76l6 6" stroke={ORANGE} strokeWidth={3} strokeLinecap="round" />
     </>
   ),
+  harness: (
+    <>
+      {/* Shoulder yoke, back D-ring and shoulder straps */}
+      <path d="M62 22q18-16 36 0" fill="none" stroke={ORANGE} strokeWidth={8} />
+      <circle cx={80} cy={9} r={5} fill="none" stroke={INK} strokeWidth={3} />
+      <path d="M58 20h9l5 46h-9zM93 20h9l-5 46h-9z" fill={ORANGE} />
+      {/* Chest strap and buckle */}
+      <rect x={59} y={36} width={42} height={6} fill={ORANGE} />
+      <rect x={73} y={33} width={14} height={12} rx={2} fill={INK} />
+      <rect x={77} y={37} width={6} height={4} fill={BG} />
+      {/* Waist belt and front buckle */}
+      <rect x={30} y={62} width={100} height={12} rx={3} fill={INK} />
+      <rect x={73} y={60} width={14} height={16} rx={2} fill={ORANGE} />
+      <rect x={77} y={64} width={6} height={8} fill={INK} />
+      {/* Leg straps and loops */}
+      <path d="M62 74h9v14h-9zM89 74h9v14h-9z" fill={ORANGE} />
+      <ellipse cx={58} cy={97} rx={17} ry={10} fill="none" stroke={ORANGE} strokeWidth={7} />
+      <ellipse cx={102} cy={97} rx={17} ry={10} fill="none" stroke={ORANGE} strokeWidth={7} />
+      <rect x={38} y={92} width={7} height={11} rx={1.5} fill={INK} />
+      <rect x={115} y={92} width={7} height={11} rx={1.5} fill={INK} />
+      {/* Lanyard and snap hook */}
+      <path d="M130 68q20-4 20-30" fill="none" stroke={INK} strokeWidth={4} />
+      <path d="M150 38V20q0-8-7-8t-7 8v6" fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" />
+      <path d="M150 30l-6-6" stroke={ORANGE} strokeWidth={3} strokeLinecap="round" />
+    </>
+  ),
 };
 
 export function Pictogram({ name, className }: { name: PictogramKey; className?: string }) {

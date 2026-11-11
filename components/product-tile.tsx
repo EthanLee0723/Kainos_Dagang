@@ -71,8 +71,10 @@ export async function ProductTile({
           className="aspect-[16/10] transition-colors duration-200 group-hover:bg-floor-2 group-hover:[--pict-bg:var(--color-floor-2)] sm:aspect-[4/3]"
         />
         <span className={`${codeTag} top-2.5 left-2.5 text-[0.72rem]`}>{product.code}</span>
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         {product.tags.length > 0 && (
-          <ul className="pointer-events-none absolute top-2.5 right-2.5 z-10 flex max-w-[60%] flex-wrap justify-end gap-1">
+          <ul className="mb-2.5 flex flex-wrap gap-1">
             {product.tags.slice(0, 2).map((tag) => (
               <li key={tag.id} className={tagBadge}>
                 {pick(tag.name, locale)}
@@ -80,8 +82,6 @@ export async function ProductTile({
             ))}
           </ul>
         )}
-      </div>
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
         <Heading className="text-[1.02rem] leading-snug font-semibold">
           <Link href={href} className="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-3 focus-visible:after:outline-orange">
             {name}
